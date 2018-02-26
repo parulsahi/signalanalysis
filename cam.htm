@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+function takeSnapshot(){
+
+    var hidden_canvas = document.querySelector('canvas'),
+        video = document.querySelector('video.camera_stream'),
+        image = document.querySelector('img.photo'),
+
+        // Get the exact size of the video element.
+        width = video.videoWidth,
+        height = video.videoHeight,
+
+        // Context object for working with the canvas.
+        context = hidden_canvas.getContext('2d');
+
+    // Set the canvas to the same dimensions as the video.
+    hidden_canvas.width = width;
+    hidden_canvas.height = height;
+
+    // Draw a copy of the current frame from the video on the canvas.
+    context.drawImage(video, 0, 0, width, height);
+
+    // Get an image dataURL from the canvas.
+    var imageDataURL = hidden_canvas.toDataURL('image/png');
+
+    // Set the dataURL as source of an image element, showing the captured photo.
+    image.setAttribute('src', imageDataURL); 
+
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

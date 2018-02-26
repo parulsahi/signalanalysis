@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+
+<style type="text/css">
+/*#myDIV {
+    border: 1px solid black;
+    background-color: lightblue;
+    width: 270px;
+    height: 200px;
+    overflow: auto;
+}*/
+
+/*h1:hover {
+    background-color: coral;
+    width: 570px;
+    height: 500px;
+    padding: 100px;
+    border-radius: 50px;
+}*/
+.sidenav {
+    height:90%;
+    width:10%;
+    position:fixed;
+    top:47%;
+    left:0;
+    background-color:#94C1A4;
+    padding-top:2%;
+}
+
+.sidenav a {
+    padding:15% 15% 15% 15%;
+    text-decoration:blink;
+    font-size:25px;
+    color:#333;
+   /* display:block;*/
+}
+
+.sidenav a:hover {
+    color: #06F;
+}
+.right {
+    height:90%;
+    width:10%;
+    position:fixed;
+    top:47%;
+    right:0;
+    background-color:#94C1A4;
+    padding-top:2%;
+}
+
+.right a {
+    padding:15% 15% 15% 15%;
+    text-decoration:blink;
+    font-size:25px;
+    color:#333;
+   /* display:block;*/
+}
+
+.right a:hover {
+    color:#06F;
+}
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 10px;}
+    .sidenav a {font-size: 40px;}
+}
+.logo
+{
+	position: fixed;
+    top:0;
+    left:0;
+	height:9%;
+	width:10%;
+}
+/*.logo:hover
+{
+	background:#CFF;
+}*/
+
+/*@-webkit-keyframes myani{
+	0%{
+		background:url(images/edit-margot-co-8.jpg);}
+	30%	{
+		background:url(images/1%20(1).jpg);}
+    60% {
+		background:url(images/logo2cc.png);}
+	90%{
+		background:url(images/img2.jpg);}
+}*/
+	
+/*.header:hover{
+		color:#6F6;
+		background-image:url(images/img2.jpg);
+		-webkit-transform:rotateX(60deg);	
+	}*/
+.box{
+	height:250px;
+	width:100%;
+    margin-top:4.5%;
+	-webkit-animation:myani 5s;
+	-webkit-animation-iteration-count:infinite;
+}
+@-webkit-keyframes myani{
+	from{
+		background:url(images/img.png);
+			background-repeat:no-repeat;
+			background-size:100% 100%;}
+	to{
+		background:url(images/stethoscope-and-copy-space_23-2147652347.jpg);
+			background-repeat:no-repeat;
+			background-size:100% 100%;}
+}
+/*.box:hover
+{
+	border-radius:20px;
+	-webkit-transform:scale(1.1);
+}*/
+    /*60% {
+		background:url(images/logo2cc.png);}
+	90%{
+		background:url(images/img2.jpg);}*/
+
+.lt {
+    width:20%;
+    height:10%;
+	color:#006;
+	font-size:300%;
+	font-family:"vivaldi";
+    position: relative;
+	margin-top:1.8%;
+    -webkit-animation: mymove 5s infinite;
+    animation: mymove 5s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+    from {left:0;}
+    to {left:40%;}
+}
+@keyframes mymove {
+    from {left:0;}
+    to {left:40%;}
+}
+.l1
+{margin-top:1%;
+}
+.main
+{
+	height:90%;
+	width:80%;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:47%;
+	border:2px strong #F0F;
+	background:url(images/aa.png);
+}
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <img class="logo" src="images/abc.png"/>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+   
+    <ul class="nav navbar-nav navbar-right l1">
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" name="s1">About SIGANA</a>
+     
+      </li>
+    
+      <li><a href="#">CONTACT US</a></li>
+      
+    </ul>
+    </div>
+    
+</nav>
+<!--<div class="logo"><img src="images/logo2cc.png" /></div>-->
+<div class="sidenav">
+  <a href="login.php">Login</a>
+  <a href="signup.php">Register</a>
+</div>
+
+<div class="box">
+<br />
+<br />
+<br />
+<div class="lt" align="center"><b>Sigana</b>
+</div>
+</div>
+<div class="right"> 
+<a href="#">Page</a>
+</div>
+<div class="main"></div>
+<marquee style="background-color: #2E9AFE; bottom:0; color: #ffffff; height:3%;position:absolute;">How can we help you!!! </marquee>
+</body>
+</html>
+
+
