@@ -2,12 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>First Page</title>
+<title>SignUp</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
+  <script src="jquery-1.11.3.js"></script>
+  <script src="webcam.min.js"></script>
+
+<script type="text/javascript">
+
+
+</script>
 
 <style type="text/css">
+
+
+
+
+
 .sidenav {
     height:1000px;
     width:15%;
@@ -25,7 +37,6 @@
     font-size:20px;
     color:#333;
    /* display:block;*/
-   font-family:Times New Roman;
 }
 
 .sidenav a:hover {
@@ -39,17 +50,14 @@
     background-color:#94C1A4;
     padding-top:2%;
 	float:left;
-   
-  
 }
 
 .right a {
     padding:15% 15% 15% 15%;
     text-decoration:blink;
-    font-size:20px;
+    font-size:25px;
     color:#333;
    /* display:block;*/
-   font-family:Times New Roman;
 }
 
 .right a:hover {
@@ -109,14 +117,7 @@
     to {left:40%;}
 }
 .l1
-{
-margin-top:9px;
-text-decoration:none;
-}
-
-
-.navbar-right l1 a:hover {
-    background-color:#16ffc9;
+{margin-top:9px;
 }
 .main
 {
@@ -130,16 +131,10 @@ text-decoration:none;
 	font-size:40px;
 float:left;
 }
-h4
-{ 
-padding-left:2%;
-padding-right:2%;
-font-family:Times New Roman;
-}
-footer
-{background-color:#000;
-color:#FFF;
-}
+
+
+
+
 </style>
 </head>
 
@@ -150,24 +145,20 @@ color:#FFF;
     <img class="logo" src="images/new.png"/>
       <a class="navbar-brand" href="#"></a>
     </div>
-   
+
     <ul class="nav navbar-nav navbar-right l1">
-    <li class="active">
-    <a href="11.php">Home</a>
-    </li>
+    <li><a href="11.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
       </li>
-    
+
       <li><a href="contact.html">Contact Us</a></li>
 		<li><a href="login.php">Login</a></li>
- <li><a href="signup.html">Sign up</a></li>     
+ <li><a href="signup.php">Sign up</a></li>
     </ul>
     </div>
-    
-</nav>
 
-<!--<div class="logo"><img src="images/logo2cc.png" /></div>-->
+</nav>
 
 
 <div class="box">
@@ -178,34 +169,102 @@ color:#FFF;
 </div>
 
 </div>
-<div>
-<div class="sidenav">
-<ul>
-<li><a href="physiology.html">Physiology</a></li><br />
-<li><a href="environment.html">Environment</a></li><br />
-<li><a href="medicalsystems.html">Medical Systems</a></li><br />
-<li><a href="instruments.html">Modern Medical Instruments</a></li><br />
-<li><a href="nadi.html">Nadi Vigyan</a></li><br />
-<li><a href="biomedicalsgns.html">Biomedical Signals</a></li><br />
-<li><a href="signalana.html">Signal Analysis and Interpretation </a></li><br />
-<li><a href="deep.html">Deep Learning</a></li></ul>
-</div>
-<div class="main"> <br />
-<br />
-<h4 align="justify"><b>Sigana is a one stop destination for your health analysis.</b></h4></div>
-<div class="right">
-<center>
-<input type= "button" value="record signal" id="record" class="btn btn-success"/>
-<br/>
-<br/>
-<input type= "button" value="analyse signal" id="record" class="btn btn-success"/>
-</center>
-</div>
-</div>
-<footer align="center">
-Developed by Department of Computer Science & IT, University of Jammu</footer>
-</body>
+
+ </body>
 </html>
+
+<?php
+
+    require('db.php');
+    if (isset($_POST['submit'])) {
+    $fname =$_POST['fname'];
+    $lname =$_POST['lname'];
+    $ffname =$_POST['ffname'];
+    $mfname =$_POST['mfname'];
+    $dob =$_POST['dob'];
+    $gender =$_POST['gender'];
+    $address =$_POST['address'];
+    $weight =$_POST['weight'];
+    $birthplace =$_POST['birthplace'];
+    $birthtime =$_POST['birthtime'];
+    $maxloc =$_POST['maxloc'];
+    $t4=$_POST['t4'];
+    $t3=$_POST['t3'];
+    $t5=$_POST['t5'];
+    $t2=$_POST['t2'];
+    $sound=$_POST['sound'];
+    $email =$_POST['email'];
+    $pwd=$_POST['pwd'];
+    $cpwd=$_POST['cpwd'];
+	$hid=$_POST['hid'];
+	$rad=$_POST['rad'];
+   
+   
+   //unique id code
+     $a=substr($fname, 0, 2); // pre defined function of php
+     $b=substr($lname, 0, 2);
+     echo '<br>';
+ $m=date('m'); // Get the month
+echo '<br>';
+ $d=date('d'); // Get the date
+echo '<br>';
+ $y=date('y'); // Get the Year
+echo '<br>';
+echo '<br>';
+
+// Get the rows count
+$re="SELECT * FROM `users`";
+$id1 = mysqli_query($con, $re);
+
+$id2=mysqli_num_rows($id1);
+// $id2 = mysqli_fetch_array($id1);
+$invID = str_pad($id2, 4, '0', STR_PAD_LEFT);
+
+
+ $sigana="sigana";
+
+ $id=$sigana.$a.$b.$d.$m.$y.$invID;
+
+   
+   
+   
+   
+    $query="UPDATE `users` Set [sound]=left([sound],len([sound])-charindex('.',Reverse([sound])))";
+    $query = "INSERT into  `users` (`id`,`fname`,`lname`,`ffname`,`mfname`,`dob`,  `gender`,
+    `address`,`weight`,`birthplace`, `birthtime`,`maxloc`,`t4`,`t3`,`t5`,`t2`,`sound`,`email`,`pwd`,`cpwd`,`image_name`)
+     VALUES ('$id','$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$weight',
+ 
+              '$birthplace', '$birthtime','$maxloc', '$t4','$t3','$t5','$t2','$sound','$email','$pwd', '$cpwd','$hid')";
+    }
+	$result = mysqli_query($con,$query);
+    if($result)
+    {
+      echo "<h3 align=center >You are registered successfully.</h3>";
+      echo "<br/><h4 align=center >Click here to <a href='login.php'>Login</a></h4>";
+      }
+      else
+      {
+       echo"error:", mysqli_error($con);
+     }
+
+    
+	
+//$upFile = 'saveimages/'.$hid;
+//echo $upFile;
+$filename=$hid;  //imagename
+if($rad=='d')    //if image is taken from local device
+{
+	
+	$filepath = 'saveimages/';
+move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
+}
+//echo $filepath.$filename;
+
+?> 
+ 
+ 
+
+
 
 
 

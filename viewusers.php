@@ -8,6 +8,11 @@
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
 
+  
+  
+      
+      <link rel="stylesheet" href="viewusers.css">
+
 <script type="text/javascript">
 
 function ShowPicture(id,Source) {
@@ -229,7 +234,10 @@ p{
 
 bottom:0;
 }
-
+footer
+{background-color:#000;
+color:#FFF;
+}
 </style>
 </head>
 
@@ -265,18 +273,20 @@ bottom:0;
 
 </div>
  <h1 align="center">Registered users on SIGANA</h1>
- <table border="5"align ="center" style="width:100%">
+ <table align ="center" style="width:100%">
         <thead>  
   
         <tr>  
-             <th>S.No.</th>
-            <th>User Id</th>  
-            <th>First Name</th>
-             <th>Last Name</th>                                        
-            <th> E-mail</th>
-            <th>Password</th>  
-            <th>Delete</th>
-            
+             <th><center><b>S.No.</b></center></th>
+             <th><center><b>User Id</b></center></th>
+             <th><center><b>Profile Picture</b></center></th>
+             <th><center><b>First Name</b></center></th>
+             <th><center><b>Last Name</b></center></th>
+             <th><center><b>E-mail</b></center></th>
+
+            <th><center><b>View</b></center></th>
+              <th><center><b>Edit</b></center></th>
+              <th><center><b>Delete</b></center></th>
         </tr>  
         </thead>
     <?php
@@ -292,21 +302,26 @@ bottom:0;
             $lname=$row[2];
             $email=$row[17];
             $pwd=$row[18];
+            $image_name=$row[20];
    ?>
         <tr>                                                        
             <td><?php echo $count; ?></td>
             <td><?php echo $id;  ?></td>
+            <td><img src="saveimages/<?php echo $image_name;?>"</td>
             <td><?php echo $fname; ?></td>
             <td><?php echo $lname; ?></td>
             <td><?php echo $email;  ?></td>
-            <td><?php echo $pwd;  ?></td>
-            <td><a href="delete.php?del=<?php echo $id ?>"><button class="btn btn-danger">Delete</button></a></td> 
-      
+           
+
+            <td><a href="vp1.php?id=<?php echo $id ?>"><button class="btn btn-success" align="center" >View</button></a></td>
+             <td><a href="adminupdate1.php?id=<?php echo $id ?>"><button class="btn btn-warning" align="center" >Edit</button></a></td>
+              <td><a href="delete.php?del=<?php echo $id ?>"><button class="btn btn-danger">Delete</button></a></td>
         </tr>
   
         <?php $count++;} ?>  
   
     </table>  
-
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>

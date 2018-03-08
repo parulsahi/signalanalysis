@@ -2,14 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Nadi vigyan</title>
+<title>SignUp</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
+  <script src="jquery-1.11.3.js"></script>
+  <script src="webcam.min.js"></script>
+<script src="recorder.js"></script>
+		<script src="Fr.voice.js"></script>
+    <script src="jquery.js"></script>
+		<script src="app.js"></script>
+<script type="text/javascript">
+
+
+
+
+</script>
 
 <style type="text/css">
+
+.button{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0px 5px;
+			padding: 5px 12px;
+			cursor: pointer;
+			outline: none;
+			font-size: 13px;
+			text-decoration: none !important;
+			text-align: center;
+			color:#fff;
+			background-color: #4D90FE;
+			background-image: linear-gradient(top,#4D90FE, #4787ED);
+			background-image: -ms-linear-gradient(top,#4D90FE, #4787ED);
+			background-image: -o-linear-gradient(top,#4D90FE, #4787ED);
+			background-image: linear-gradient(top,#4D90FE, #4787ED);
+			border: 1px solid #4787ED;
+			box-shadow: 0 1px 3px #BFBFBF;
+		}
+		a.button{
+			color: #fff;
+		}
+		.button:hover{
+			box-shadow: inset 0px 1px 1px #8C8C8C;
+		}
+		.button.disabled{
+			box-shadow:none;
+			opacity:0.7;
+		}
+    canvas{
+      display: block;
+    }
+
+
 .sidenav {
-    height:700px;
+    height:1000px;
     width:15%;
     top:47%;
     left:0;
@@ -31,7 +78,7 @@
     color: #06F;
 }
 .right {
-    height:700px;
+    height:1000px;
     width:15%;
     top:47%;
     right:0;
@@ -109,7 +156,7 @@
 }
 .main
 {
-	height:700px;
+	height:1000px;
 	width:70%;
 	left:15%;
 	right:15%;
@@ -119,43 +166,32 @@
 	font-size:40px;
 float:left;
 }
-h4
-{ 
-padding-left:2%;
-padding-right:2%;
-font-family:Times New Roman;
-}
-footer
-{background-color:#000;
-color:#FFF;
-}
+
+
 </style>
 </head>
 
-<body bgcolor="#E6E6E6">
+<body bgcolor="#E6E6E6" >
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
     <img class="logo" src="images/new.png"/>
       <a class="navbar-brand" href="#"></a>
     </div>
-   
-   <ul class="nav navbar-nav navbar-right l1">
-     <li>
-        <a href="11.php">Home</a>   
-      </li>
+
+    <ul class="nav navbar-nav navbar-right l1">
+    <li><a href="11.php">Home</a></li>
       <li>
-        <a href="about.html">About</a>   
+        <a href="about.html">About</a>
       </li>
+
       <li><a href="contact.html">Contact Us</a></li>
 		<li><a href="login.php">Login</a></li>
- <li><a href="signup.html">Sign up</a></li>     
+ <li><a href="signup.html">Sign up</a></li>
     </ul>
     </div>
-    
-</nav>
 
-<!--<div class="logo"><img src="images/logo2cc.png" /></div>-->
+</nav>
 
 
 <div class="box">
@@ -166,34 +202,44 @@ color:#FFF;
 </div>
 
 </div>
-<div>
-<div class="sidenav">
-<ul>
-<li><a href="physiology.html">Physiology</a></li><br />
-<li><a href="environment.html">Environment</a></li><br />
-<li><a href="medicalsystems.html">Medical Systems</a></li><br />
-<li><a href="instruments.html">Modern Medical Instruments</a></li><br />
-<li><a href="nadi.html">Nadi Vigyan</a></li><br />
-<li><a href="biomedicalsgns.html">Biomedical Signals</a></li><br />
-<li><a href="signalana.html">Signal Analysis and Interpretation </a></li><br />
-<li><a href="deep.html">Deep Learning</a></li></ul>
+
+<div class="container">
+
+
+    <h2>Record</h2>
+		<audio controls id="audio"></audio>
+    <div>
+      <a class="button recordButton" id="record">Record</a>
+      <a class="button recordButton" id="recordFor5">Record For 5 Seconds</a>
+      <a class="button disabled one" id="pause">Pause</a>
+      <a class="button disabled one" id="stop">Reset</a>
+    </div><br/>
+    <div>
+      <input class="button" type="checkbox" id="live"/>
+      <label for="live">Live Output</label>
+    </div>
+		<div data-type="wav">
+			<p>WAV Controls:</p>
+			<a class="button disabled one" id="play">Play</a>
+			<a class="button disabled one" id="download">Download</a>
+      <a class="button disabled one" id="base64">Base64 URL</a>
+      <a class="button disabled one" id="save">Upload to Server</a>
+		</div>
+    <div data-type="mp3">
+      <p>MP3 Controls:</p>
+      <a class="button disabled one" id="play">Play</a>
+      <a class="button disabled one" id="download">Download</a>
+      <a class="button disabled one" id="base64">Base64 URL</a>
+      <a class="button disabled one" id="save">Upload to Server</a>
+    </div>
+    <canvas id="level" height="200" width="500"></canvas>
+
+
+
+
+
+
+
 </div>
-<div class="main"> <br />
-<br />
-<h4 align="justify"><b>Nadi Pariksha is the ancient ayurvedic technique of diagnosis through the pulse. It can accurately diagnose physical, mental and emotional imbalances as well as diseases. It is a non- invasive science that enables to reach the root cause of health issues and not just address the symptoms.</b></h4></div>
-<div class="right"> 
-<center>
-<input type= "button" value="record signal" id="record" class="btn btn-success"/>
-<br/>
-<br/>
-<input type= "button" value="analyse signal" id="record" class="btn btn-success"/>
-</center>
-</div>
-</div>
-<footer align="center">
-Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>
-
-
-

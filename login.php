@@ -9,7 +9,7 @@
 
 <style type="text/css">
 .sidenav {
-    height:1000px;
+    height:600px;
     width:15%;
     top:47%;
     left:0;
@@ -31,7 +31,7 @@
     color: #06F;
 }
 .right {
-    height:1000px;
+    height:600px;
     width:15%;
     top:47%;
     right:0;
@@ -41,11 +41,12 @@
 }
 
 .right a {
-    padding:15% 15% 15% 15%;
+     padding:15% 15% 15% 15%;
     text-decoration:blink;
-    font-size:25px;
+    font-size:20px;
     color:#333;
    /* display:block;*/
+   font-family:Times New Roman;
 }
 
 .right a:hover {
@@ -109,15 +110,28 @@
 }
 .main
 {
-	height:1000px;
+	height:600px;
 	width:70%;
 	left:15%;
 	right:15%;
 	top:47%;
-	border:2px strong #F0C;
+	//border:2px strong #F0C;
 	background:linear-gradient(to right,#D2DDB2,#C0D6AF,#DDE4B8,#D2DDB2,#DDE4B8,#C0D6AF,#D2DDB2);
-	font-size:40px;
+	//font-size:40px;
 float:left;
+
+}
+
+input[type=email]{
+width:850px;
+}
+input[type=password]{
+width:850px;
+}
+
+footer
+{background-color:#000;
+color:#FFF;
 }
 </style>
 </head>
@@ -133,12 +147,12 @@ float:left;
     <ul class="nav navbar-nav navbar-right l1">
     <li><a href="11.php">Home</a></li>
       <li>
-        <a href="#">About</a>   
+        <a href="about.html">About</a>   
       </li>
     
-      <li><a href="#">Contact Us</a></li>
-		
- <li><a href="signup.php">Sign up</a></li>     
+      <li><a href="contact.html">Contact Us</a></li>
+		<li class="active"><a href="login.php">Login</a></li>
+ <li><a href="signup.html">Sign up</a></li>     
     </ul>
     </div>
     
@@ -187,6 +201,7 @@ if (isset($_POST['email'])){
     $sound=$row['sound'];
     $cpwd=$row['cpwd'];
     $maxloc=$row['maxloc'];
+    $image_name=$row['image_name'];
 
          $_SESSION['email']= $email;
           $_SESSION['pwd']= $pwd;
@@ -208,6 +223,7 @@ if (isset($_POST['email'])){
          $_SESSION['t5']= $t5;
          $_SESSION['sound']= $sound;
          $_SESSION['cpwd']= $cpwd;
+         $_SESSION['image_name']= $image_name;
         header("Location: patientinf.php");
          }else{
     echo "<h3>Username/password is incorrect.</h3>
@@ -215,24 +231,49 @@ if (isset($_POST['email'])){
     }
     }else{
 ?>
+<div class="sidenav">
+<ul>
+<li><a href="physiology.html">Physiology</a></li><br />
+<li><a href="environment.html">Environment</a></li><br />
+<li><a href="medicalsystems.html">Medical Systems</a></li><br />
+<li><a href="instruments.html">Modern Medical Instruments</a></li><br />
+<li><a href="nadi.html">Nadi vigyan</a></li><br />
+<li><a href="biomedicalsgns.html">Biomedical Signals</a></li><br />
+<li><a href="signalana.html">Signal Analysis and Interpretation </a></li><br />
+<li><a href="deep.html">Deep learning</a></li></ul>
+</div>
+<div class="main">
 
-<div class="container">
+
+
   <form action="" method="post" name="login">
   <br/>
   <br />
-  <div class="form-group">
-     <label for="email">Email:</label>
+  
+  <div class="form-group" style="margin-left:45px;">
+     <label for="email" >Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="required">
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-left:45px;">
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required="required" >
     </div>
-    <input type="submit"  name="submit" class="btn btn-success" value="Submit"/>
+    <input type="submit"  name="submit" class="btn btn-success" value="Submit" style="margin-left:45px;"/>
   </form>
-  <p>Not registered yet? <a href='signup.php'>Register Here</a></p>
+  <p style="margin-left:45px;">Not registered yet? <a href='signup.html'>Register Here</a></p>
 </div>
 
-<?php } ?>
+<div class="right">
+<center>
+<input type= "button" value="record signal" id="record" class="btn btn-success"/>
+<br/>
+<br/>
+<input type= "button" value="analyse signal" id="record" class="btn btn-success"/>
+</center>
+</div>
+
+<?php   } ?>
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>
