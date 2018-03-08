@@ -1,14 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <?php
 require('db.php');
-include("auth.php");
-$id = isset($_POST['id']) ? $_POST['id'] : '';
-//$id=$_SESSION['id'];
+//getting id from url
+$id = $_GET['id'];
+ 
+//selecting data associated with this particular id
 $query = "SELECT * from `users` WHERE id='".$id."'";
 $result = mysqli_query($con, $query) or die ( mysqli_error());
-$row = mysqli_fetch_assoc($result);
-//$res=mysqli_fetch_array($query);
+ 
+while($res = mysqli_fetch_array($result))
+{
+    $id=$res['id'];
+    $fname =$res['fname'];
+    $lname =$res['lname'];
+    $ffname =$res['ffname'];
+    $mfname =$res['mfname'];
+    $dob =$res['dob'];
+    $gender =$res['gender'];
+    $address =$res['address'];
+    $weight =$res['weight'];
+    $birthplace =$res['birthplace'];
+    $birthtime =$res['birthtime'];
+    $maxloc =$res['maxloc'];
+    $t4=$res['t4'];
+    $t3=$res['t3'];
+    $t5=$res['t5'];
+    $t2=$res['t2'];
+    $sound=$res['sound'];
+    $email =$res['email'];
+    $pwd=$res['pwd'];
+    $cpwd=$res['cpwd'];
+ 
+	$image_name=$res['image_name'];
+}
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -430,7 +457,7 @@ border-color:#ff2014;*/
     </div>
 
     <ul class="nav navbar-nav navbar-right l1">
-        <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
+        
     <li><a href="11.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
@@ -453,76 +480,18 @@ border-color:#ff2014;*/
 
 </div>
 
-<?php
-$status = "";
-    
-if(isset($_POST['new']) && $_POST['new']==1)
-{
-    $id=$_POST['id'];
-    $fname =$_POST['fname'];
-    $lname =$_POST['lname'];
-    $ffname =$_POST['ffname'];
-    $mfname =$_POST['mfname'];
-    $dob =$_POST['dob'];
-    $gender =$_POST['gender'];
-    $address =$_POST['address'];
-    $weight =$_POST['weight'];
-    $birthplace =$_POST['birthplace'];
-    $birthtime =$_POST['birthtime'];
-    $maxloc =$_POST['maxloc'];
-    $t4=$_POST['t4'];
-    $t3=$_POST['t3'];
-    $t5=$_POST['t5'];
-    $t2=$_POST['t2'];
-    $sound=$_POST['sound'];
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    $cpwd=$_POST['cpwd'];
-    $image_name=$_POST['hid'];
-    $rad=$_POST['rad'];
-                                    //uploading new photo to saveimages folder
-     $filename=$image_name;  //imagename
-if($rad=='d')    //if image is taken from local device
-{
-
-	$filepath = 'saveimages/';
-move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
-}
-//echo $filepath.$filename;
-
-
-$update="UPDATE `users` SET `fname`='".$fname."',`lname`='".$lname."',`ffname`='".$ffname."',`mfname`='".$mfname."',
-`dob`='".$dob."',`gender`='".$gender."',`address`='".$address."',`weight`='".$weight."',`birthplace`='".$birthplace."',
-`birthtime`='".$birthtime."',`t4`='".$t4."',`t3`='".$t3."',`t5`='".$t5."',`t2`='".$t2."',`maxloc`='".$maxloc."',`sound`='".$sound."',
-`image_name`='".$image_name."'
- WHERE id='".$id."'";
-$res=mysqli_query($con, $update) or die(mysqli_error($con));
- if($res)
- {
-echo $status = "Record updated Successfully";
-echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
-
-
-}
-  else
-     {
-      echo("Error description: " . mysqli_error($con));
-      }
-}else {
-?>
 
 <h1 align="center">CLIENT'S POFILE</h1>
 <div class="container">
   <form action="" method="POST" enctype="multipart/form-data" >
-  
-<input type="hidden" name="new" value="1" />
-<input name="id" type="hidden" value="<?php echo $_SESSION['id'];?>" />
 
+<input name="id" type="hidden" value="<?php echo $id;?>" />
+ <input type="hidden" name="new" value="1" />
   <div class="imagediv">
-<div id="my_camera"><img src="saveimages/<?php echo $_SESSION['image_name']; ?>" width="200" height="200"  id="blah" /></div>   <!--for displaying video of webcam-->
+<div id="my_camera"><img src="saveimages/<?php echo $image_name;?>"  width="200" height="200"  id="blah" /></div>   <!--for displaying video of webcam-->
 <table  align="center"  width="270">
 <th>
-<label style="margin-left:20px"; id="choose">Choose mode of photo upload :</label><br/>
+<label style="margin-left:20px"; id="choose">Choose mode of photo upload </label><br/>
 </th>
 <tr>
 <td align="center" colspan="2">
@@ -557,24 +526,24 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
    <div class="form-group">
      <label for="Firstname">First Name:</label>
-       <input type="text" class="form-control" id="fname" value="<?php echo $_SESSION['fname'];?>"placeholder="Enter firstname" name="fname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+       <input type="text" class="form-control" id="fname" value="<?php if(isset($fname)){echo $fname; } else{}?>" placeholder="Enter firstname" name="fname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
       </div>
        <div class="form-group">
-      <label for="Lastname">Last Name:</label>
-       <input type="text" class="form-control" id="lname" value="<?php echo $_SESSION['lname'];?>" placeholder="Enter lastname" name="lname" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+      <label for="Lastname">Last Name</label>
+       <input type="text" class="form-control" id="lname" value="<?php echo $lname; ?>" placeholder="Enter lastname" name="lname" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-     <label for="Fathersname">Father's Name:</label>
-       <input type="text" class="form-control" id="ffname"  value="<?php echo $_SESSION['ffname'];?>"placeholder="Enter father's name" name="ffname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="Fathersname">Father's Name</label>
+       <input type="text" class="form-control" id="ffname"  value="<?php echo $ffname; ?>"placeholder="Enter father's name" name="ffname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
 
     </div>
      <div class="form-group">
-     <label for="Mothersname">Mother's Name:</label>
-       <input type="text" class="form-control" id="mfname"  value="<?php echo $_SESSION['mfname'];?>" placeholder="Enter mother's name" name="mfname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="Mothersname">Mother's Name</label>
+       <input type="text" class="form-control" id="mfname"  value="<?php echo $mfname; ?>" placeholder="Enter mother's name" name="mfname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
 
      <div class="form-group">
-     <label for="Date of Birth">Date of Birth:</label>
-       <input type="date" class="form-control" id="dob"  value="<?php echo $_SESSION['dob'];?>"  name="dob"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Date of Birth">Date of Birth</label>
+       <input type="date" class="form-control" id="dob"  value="<?php echo $dob; ?>"  name="dob"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
 
       <div class="form-group">
@@ -583,13 +552,13 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
    <option value="">- Choose -</option>
   <option value="male"
   <?php
-  if($_SESSION['gender']=='male')
+  if($gender=='male')
   echo"selected"
   ?>
   >Male</option>
 <option value="female"
  <?php
-  if($_SESSION['gender']=='female')
+  if($gender=='female')
   echo"selected"
   ?>
   >Female</option>
@@ -599,30 +568,30 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
     <div class="form-group">
      <label for="Address">Address</label>
-       <input type="text" class="form-control"  value="<?php echo $_SESSION['address'];?>" id="address" placeholder="Enter address" name="address"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+       <input type="text" class="form-control"  value="<?php echo $address; ?>" id="address" placeholder="Enter address" name="address"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
      <div class="form-group">
-     <label for="weight">Weight:</label>
-      <input type="number" class="form-control"  value="<?php echo $_SESSION['weight'];?>" id="weight" placeholder="Enter your weight" name="weight"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="weight">Weight</label>
+      <input type="number" class="form-control"  value="<?php echo $weight; ?>" id="weight" placeholder="Enter your weight" name="weight"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
 
     <div class="form-group">
-     <label for="Birth Place">Birth Place:</label>
-      <input type="text" class="form-control"  value="<?php echo $_SESSION['birthplace'];?>" id="birthplace" placeholder="Enter birthplace" name="birthplace"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Birth Place">Birth Place</label>
+      <input type="text" class="form-control"  value="<?php echo $birthplace; ?>" id="birthplace" placeholder="Enter birthplace" name="birthplace"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-     <label for="Birth Time">Birth Time:</label>
-      <input type="time" class="form-control" id="birthtime"  value="<?php echo $_SESSION['birthtime'];?>" placeholder="Enter birthtime" name="birthtime"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Birth Time">Birth Time</label>
+      <input type="time" class="form-control" id="birthtime"  value="<?php echo $birthtime; ?>" placeholder="Enter birthtime" name="birthtime"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-     <label for="Location where you lived maximum time">Place where you stayed the longest:</label>
-     <input type="text" class="form-control"  value="<?php echo $_SESSION['maxloc'];?>" id="maxloc" placeholder="Enter location" name="maxloc"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Location where you lived maximum time">Place where you stayed the longest</label>
+     <input type="text" class="form-control"  value="<?php echo $maxloc; ?>" id="maxloc" placeholder="Enter location" name="maxloc"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
      </div>
 
     <div class="form-group">
-     <label for="Hands">Choose type of your hands:</label>
+     <label for="Hands">Choose type of your hands</label>
 
-     <input type="text" class="form-control" name="t4"  value="<?php echo $_SESSION['t4'];?>"  id="t4" onfocus="(ShowPicture('Stylehand',1),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <input type="text" class="form-control" name="t4"  value="<?php echo $t4; ?>"  id="t4" onfocus="(ShowPicture('Stylehand',1),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
 <div id="Stylehand"><img src="images/Types-of-Hand.png" border="1" width="650" height="400" alt="hand" usemap="#handcollage">
 <map name="handcollage">
   <area shape="rect" coords="0,0,80,400" alt="square" name="square" href="#" title="square" id="square" onclick="hand(this.id)";>
@@ -639,8 +608,8 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
     </div>
     <div class="form-group">
-     <label for="Eyes">Choose type of your eyes:</label>
-     <input type="text" class="form-control" name="t3"  value="<?php echo $_SESSION['t3'];?>"  id="t3" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',1),ShowPicture('Styletaste',0))">
+     <label for="Eyes">Choose type of your eyes</label>
+     <input type="text" class="form-control" name="t3"  value="<?php echo $t3; ?>"  id="t3" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',1),ShowPicture('Styletaste',0))">
 <div id="Styleeye"><img src="images\fresh-look-color-blends.jpg" border="1" width="550" height="407" alt="eye" usemap="#eyecollage">
 <map name="eyecollage">
   <area shape="rect" coords="0,0,180,130" alt="gray" name="gray" href="#" title="gray" id="gray" onclick="eye(this.id)";>
@@ -659,9 +628,9 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
     </div>
     <div class="form-group">
-     <label for="Color">Choose any color:</label>
+     <label for="Color">Choose any color</label>
 
-      <input type="text" class="form-control" name="t5"  value="<?php echo $_SESSION['t5'];?>"  id="t5" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0),ShowPicture('Stylecolor',1))">
+      <input type="text" class="form-control" name="t5"  value="<?php echo $t5; ?>"  id="t5" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0),ShowPicture('Stylecolor',1))">
 <div id="Stylecolor"><img src="images\color.png" border="1" width="400" height="400" alt="eye" usemap="#colorcollage">
 <map name="colorcollage">
   <area shape="poly" coords="152,20,246,21,230,88,170,88,152,20" alt="orange" name="orange" href="#" title="orange" id="orange" onclick="color(this.id)";>
@@ -683,8 +652,8 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
     </div>
 
      <div class="form-group">
-     <label for="Taste">Choose any taste:</label>
-      <input type="text" class="form-control" name="t2"  value="<?php echo $_SESSION['t2'];?>"  id="t2" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',1))">
+     <label for="Taste">Choose any taste</label>
+      <input type="text" class="form-control" name="t2"  value="<?php echo $t2; ?>"  id="t2" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',1))">
 <div id="Styletaste"><img src="images\collage.jpg" border="1" width="550" height="407" alt="taste" usemap="#tastecollage">
 <map name="tastecollage">
   <area shape="rect" coords="0,0,165,200" alt="bitter" name="bitter" href="#" title="bitter" id="bitter" onclick="taste(this.id)";>
@@ -698,18 +667,18 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
 
  <div class="form-group">
-     <label for="sound">Choose music of your choice:</label>
-    <select id="sound" class="form-control"  value="<?php echo $_SESSION['sound'];?>"  name="sound" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))" ;>
+     <label for="sound">Choose music of your choice</label>
+    <select id="sound" class="form-control"  value="<?php echo $sound; ?>"  name="sound" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))" ;>
   <option value="">- Select track -</option>
   <option value="images/SleepAway.mp3"
  <?php
-  if($_SESSION['sound']=='images/SleepAway.mp3')
+  if($sound=='images/SleepAway.mp3')
   echo"selected"
   ?>
   >Flying in clouds</option>
   <option value="images/Kalimba.mp3"
   <?php
-  if($_SESSION['sound']=='images/Kalimba.mp3')
+  if($sound=='images/Kalimba.mp3')
   echo"selected"
   ?>
   >Chilling on beach</option>
@@ -723,16 +692,16 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
 
     <div class="form-group">
-     <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" value="<?php echo $_SESSION['email'];?>"placeholder="Enter email" name="email"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" value="<?php echo $email; ?>"placeholder="Enter email" name="email"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control"  value="<?php echo $_SESSION['pwd'];?>" id="pwd" placeholder="Enter new password" name="pwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+      <label for="pwd">Password</label>
+      <input type="password" class="form-control"  value="<?php echo $pwd; ?>" id="pwd" placeholder="Enter new password" name="pwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
         <div class="form-group">
-      <label for="pwd">Confirm Password:</label>
-      <input type="password" class="form-control"  value="<?php echo $_SESSION['cpwd'];?>" id="pwd" placeholder="Confirm your password" name="cpwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+      <label for="cpwd">Confirm Password</label>
+      <input type="password" class="form-control"  value="<?php echo $cpwd; ?>" id="cpwd" placeholder="Confirm your password" name="cpwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
 
   <input type="text" id="hid"  style="display:none;" name="hid" />
@@ -741,6 +710,6 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
 
       </form>
  </div>
-<?php } ?>
+
 </body>
 </html>

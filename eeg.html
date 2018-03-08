@@ -17,13 +17,14 @@
 <style type="text/css">
 
 
-#myimg {
+
+#myimg #myimg2{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#myimg:hover {opacity: 0.7;}
+#myimg #myimg2:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
@@ -58,6 +59,8 @@
     color: #ccc;
     padding: 10px 0;
     height: 150px;
+    font-family:Times New Roman;
+    font-size:16px;
 }
 
 /* Add Animation */
@@ -102,7 +105,6 @@
         width: 100%;
     }
 }
-
 
 
 
@@ -233,16 +235,28 @@ color:#FFF;
 
 
 .image{
+
 height:250px;
 width:250px;
-margin-right:200px;
+margin-right:100px;
+margin-left:50px;
 top:-500px;
+float:left;
+//border:2px solid;
+//border-color:#ff2014;
+}
+
+.image3{
+height:100px;
+width:350px;
+margin-right:100px;
+//top:-500px;
 float:right;
 //border:2px solid;
 //border-color:#ff2014;
-
-
 }
+
+
 </style>
 </head>
 
@@ -292,35 +306,72 @@ float:right;
 <li><a href="signalana.html">Signal Analysis and Interpretation </a></li><br />
 <li><a href="deep.html">Deep Learning</a></li></ul>
 </div>
-<div class="main"> <br />
-<br />
-<h2 style="font-family:vivaldi;margin-left:45px; margin-right:45px; margin-top:-70px;" align="justify"><b>Biomedical Signals</b></h2>
+<div class="main"> 
+<h2 style="font-family:vivaldi;margin-left:45px; margin-right:45px; margin-top:50px;" align="justify"><b>
+Electroencephalogram (EEG)</b></h2>
 <h4 align="justify" style="margin-left:45px; margin-right:45px;">
-A biosignal is any signal in living beings that can be continually measured and monitored. 
-The biosignals used for medical applications are known as biomedical signals. 
-Biosignals may be classified as electric or non-electric. Electrical biosignals, or bioelectrical time signals, 
-usually refers to the change in electric current produced by the sum of an electrical potential difference across
- a specialized tissue, organ or cell system. Commonly known bioelectrical signals are:
- <br/>
- <br/>
-  <div class="image">
-  <a href="#"><img id="myimg" src="images/biosig.jpg" height:"400px" width="400px" alt="Sources of Biomedical Signals"></a>  
+The electroencephalogram (EEG) is the depiction of the electrical activity occurring 
+at the surface of the brain. 
+EEG measures voltage fluctuations resulting from ionic current within the neurons of the brain. 
+The electrical activity appears on the screen of the EEG machine as waveforms of varying frequency 
+and amplitude measured in voltage. 
+<br/><br/>
+</h4>
+<h4>
+<div class="image">
+  <a href="#"><img id="myimg" src="images/eeg2.png" height:"1000px" width="300px" alt="10 - 20 system for electrode placement"></a>  
  </div>
- <!-- The Modal -->
+</h4> 
+<h4 align="justify" style="margin-left:45px; margin-right:45px;"><b>Recording an EEG</b></h4>
+<h4><p align="justify" style="margin-left:45px; margin-right:45px;">
+The EEG can be recorded by placing the electrodes on the scalp of the subject.
+ The standard system for placement of the electrodes or channels on the scalp of the person is the 10-20 system. 
+ In the 10-20 system the placement of the electrodes is based on the relationship between area of
+  cerebral cortex (the 10 and 20 refers to the 10% and 20% inter-electrode distance) and location of electrode. 
+  The placement of the electrodes is adjusted acc. to the parts of human brain:
+   F (frontal), C (central), T (temporal), P (posterior), O (Occipital). </h4>
+</p>
+
+<br/>
+
+<h4 align="justify" style="margin-left:45px; margin-right:45px;"><b>Types of Brain Waves according to frequency:</b></h4>
+<h4>
+<div class="image3">
+  <a href="#"><img id="myimg2" src="images/eeg3.png" height:"700px" width="300px" alt="Types of brain waves"></a>  
+ </div>
+ </h4>
+<h4 align="justify" style="margin-left:45px; margin-right:45px;">
+<br/>
+<ul>
+<li>Alpha waves: 8-13 Hz</li>
+<li>Beta waves: 14-30 Hz</li>
+<li>Theta waves: 4-7 Hz</li>
+<li>Delta waves: <3.5 Hz</li>
+
+</ul>
+</h4>
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
+
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var img = document.getElementById('myimg');
+var img2 = document.getElementById('myimg2');
+
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+img2.onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
@@ -334,24 +385,8 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 </script>
- <ul>
- <li><a href="eeg.html" style="color:black;"> Electroencephalogram (EEG)</a></li><br/>
- <li><a href="ecg.html" style="color:black;"> Electrocardiogram (ECG)</a></li><br/>
- <li><a href="emg.html" style="color:black;"> Electromyogram (EMG)</a></li><br/>
- <li><a href="mmg.html" style="color:black;"> Mechanomyogram (MMG)</a></li><br/>
- <li><a href="eog.html" style="color:black;"> Electrooculography (EOG)</a></li><br/><br/><br/>
- 
- </ul>
 
- <br/>
- <br/>
- 
- With the development of methods for remote measurement of electric fields using new sensor technology, 
- electric biosignals such as EEG and ECG can be measured without electric contact with the skin. 
- Non-electric biosignal may refer to any non-electrical signal that is capable of being monitored from biological beings,
-    such as mechanical signals (e.g. MMG), acoustic signals (e.g. phonetic and non-phonetic utterances, breathing),
-     chemical signals (e.g. pH, oxygenation) and optical signals (e.g. movements).</h4>
-    
+
     </div>
 <div class="right"> 
 
@@ -362,6 +397,7 @@ span.onclick = function() {
 <input type= "button" value="analyse signal" id="record" class="btn btn-success"/>
 </center>
 </div>
+
 </div>
 <footer align="center">
 Developed by Department of Computer Science & IT, University of Jammu</footer>
