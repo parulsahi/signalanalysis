@@ -133,10 +133,10 @@ float:left;
     <ul class="nav navbar-nav navbar-right l1">
     <li><a href="11.php">Home</a></li>
       <li>
-        <a href="#">About</a>   
+        <a href="about.html">About</a>   
       </li>
     
-      <li><a href="#">Contact Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
 		     
     </ul>
     </div>

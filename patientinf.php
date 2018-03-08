@@ -1,5 +1,7 @@
 <?php
 include("auth.php");
+require('db.php');
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -138,6 +140,11 @@ ShowPicture('Stylecolor',0);
 .sidenav a:hover {
     color: #06F;
 }
+.container
+{
+  height:700px; 
+   }
+}
 .right {
     height:1000px;
     width:15%;
@@ -231,7 +238,10 @@ p{
 
 bottom:0;
 }
-
+footer
+{background-color:#000;
+color:#FFF;
+}
 </style>
 </head>
 
@@ -267,7 +277,7 @@ bottom:0;
 
 </div>
 <div class="container">
-  <form action="form.php" >
+  <form action="#" >
   <br/>
   <br />
   <button type="submit" class="btn btn-success">Record</button>
@@ -277,10 +287,17 @@ bottom:0;
   <br />
   <button type="submit" class="btn btn-success">Analysis</button>
   </form>
-  <form  >
+
+   <form action="vp.php" >
   <br/>
-  <a href="update.php"?id=<?php echo $_SESSION['id'];?>" class="button js-button" role="button">Profile</a>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">View Profile</button>
+
+
   </form>
+
 </div>
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>
