@@ -458,7 +458,7 @@ border-color:#ff2014;*/
 
     <ul class="nav navbar-nav navbar-right l1">
         
-    <li><a href="11.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
       </li>

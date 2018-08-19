@@ -282,7 +282,7 @@ float:left;
 
     <ul class="nav navbar-nav navbar-right l1">
        
-    <li><a href="11.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
       </li>
@@ -329,11 +329,12 @@ float:left;
           
 
     </table>
-     <form action="adminupdate.php" method="POST" enctype="multipart/form-data">
+     <form action="viewusers.php" method="POST" enctype="multipart/form-data">
   <br/>
   <br />
- <center> <button type="submit"   class="btn btn-success" id="<?php echo $id;?>">Edit Profile</button>  </center>
-  </form>
+ <center> <button type="submit"   class="btn btn-success" >Go Back</button>  </center>
+  </form
+   
 
 </body>
 </html>

@@ -1,17 +1,8 @@
-<?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-if (isset($_SESSION['id']))
-{
-  header("Location: patientinf.php");
-}
- ?>
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SignUp</title>
+<title>email confirmation</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
@@ -181,7 +172,7 @@ float:left;
       </li>
        <li><a href="contact.php">Contact Us</a></li>
       <li><a href="login.php">Login</a></li>
- <li class="active"><a href="signup.php">Sign up</a></li>     
+ <li class><a href="signup.php">Sign up</a></li>     
     </ul>
     <?php   }?>
      </div>
@@ -199,119 +190,35 @@ float:left;
 
 </div>
 
- </body>
-</html>
-
 <?php
 
-    require('db.php');
-    if (isset($_POST['submit'])) {
-    $fname =$_POST['fname'];
-    $lname =$_POST['lname'];
-    $ffname =$_POST['ffname'];
-    $mfname =$_POST['mfname'];
-    $dob =$_POST['dob'];
-    $gender =$_POST['gender'];
-    $address =$_POST['address'];
-    $weight =$_POST['weight'];
-    $birthplace =$_POST['birthplace'];
-    $birthtime =$_POST['birthtime'];
-    $maxloc =$_POST['maxloc'];
-    $t4=$_POST['t4'];
-    $t3=$_POST['t3'];
-    $t5=$_POST['t5'];
-    $t2=$_POST['t2'];
-    $sound=$_POST['sound'];
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    $cpwd=$_POST['cpwd'];
-	$hid=$_POST['hid'];
-	$rad=$_POST['rad'];
-    $image_name=$_POST['hid'];
-   
-//unique email
-   $query = "SELECT * FROM users WHERE email = '$email'";
-   $result =  $con->query($query);
-				
-				if( $result->num_rows > 0)
-				{
-					header("Location:signup.php?err=".urlencode("Email Already Present!!"));
-				}
-				else
-				{
-					
-   //unique id code
-     $a=substr($fname, 0, 2); // pre defined function of php
-     $b=substr($lname, 0, 2);
-     echo '<br>';
- $m=date('m'); // Get the month
-echo '<br>';
- $d=date('d'); // Get the date
-echo '<br>';
- $y=date('y'); // Get the Year
-echo '<br>';
-echo '<br>';
+require('db.php');
 
-// Get the rows count
-$re="SELECT * FROM `users`";
-$id1 = mysqli_query($con, $re);
+$id = $_GET['id'];
+$code = $_GET['confirmcode'];
 
-$id2=mysqli_num_rows($id1);
-// $id2 = mysqli_fetch_array($id1);
-$invID = str_pad($id2, 4, '0', STR_PAD_LEFT);
+$query = ("SELECT * FROM `users` WHERE `id`='$id'");
+    $result = mysqli_query($con,$query) or die(mysql_error());
 
-
- $sigana="sigana";
-
- $id=$sigana.$a.$b.$d.$m.$y.$invID;
-
-
-if($fname && $email && $pwd)       {
-
-//random code
-		$confirmcode = rand();
-   
-   
-    $query="UPDATE `users` Set [sound]=left([sound],len([sound])-charindex('.',Reverse([sound])))";
-    $query = "INSERT into  `users` (`id`,`fname`,`lname`,`ffname`,`mfname`,`dob`,  `gender`,
-    `address`,`weight`,`birthplace`, `birthtime`,`maxloc`,`t4`,`t3`,`t5`,`t2`,`sound`,`email`,`pwd`,`cpwd`,`image_name`,`signup_date`,`role`,`confirmed`,`confirmcode`)
-     VALUES ('$id','$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$weight',
- 
-              '$birthplace', '$birthtime','$maxloc', '$t4','$t3','$t5','$t2','$sound','$email','$pwd', '$cpwd','$hid',NOW(),'client','0','$confirmcode')";
-
-	$result = mysqli_query($con,$query);
-
-    $message =
-		"Confirm Your Email
-		Click the link below to verify your account
-		http://www.sigana.in/emailconfirm.php?id=$id&code=$confirmcode
-		";
-		mail($email,"Email Verification",$message,"From: contactus@sigana.in");
-		
-		echo "<h4 align='center'>Registration Complete! Please confirm your email address</h4>";
-	}
-
-    }
-
-     }
-
-//$upFile = 'saveimages/'.$hid;
-//echo $upFile;
-$filename=$hid;  //imagename
-if($rad=='d')    //if image is taken from local device
+while($res = mysqli_fetch_array($result))
 {
-	
-	$filepath = 'saveimages/';
-move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
+	$db_code = $row['confirmcode'];
 }
-//echo $filepath.$filename;
+if($code == $db_code)
+{
+$update="UPDATE `users` SET `confirmed`='1',`confirmcode`='0'";
+   $res=mysqli_query($con,$update) or die(mysqli_error($con));
+	
+	echo "</br><h4 align='center'>Thank You. Your email has been confirmed and you may now Login.</h4>";
+	echo "<h4 align='center'>Click here to <a href='login.php'>Login</a></h4>.";
+	 
+}
+else
+{
+	echo "User Id and code dont match";	
+}
 
-?> 
- 
- 
-
-
-
-
-
+?>
+</body>
+</html>
 

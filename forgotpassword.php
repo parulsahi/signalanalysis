@@ -1,17 +1,12 @@
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-if (isset($_SESSION['id']))
-{
-  header("Location: patientinf.php");
-}
- ?>
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+require('db.php');
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SignUp</title>
+<title>forgotpassword</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
@@ -181,7 +176,7 @@ float:left;
       </li>
        <li><a href="contact.php">Contact Us</a></li>
       <li><a href="login.php">Login</a></li>
- <li class="active"><a href="signup.php">Sign up</a></li>     
+ <li class><a href="signup.php">Sign up</a></li>     
     </ul>
     <?php   }?>
      </div>
@@ -199,119 +194,66 @@ float:left;
 
 </div>
 
+
+<h3 align='center'> <b>Request for new passsword</b></h3>
+<hr>
+<h4 align='center'>Please enter your email address</h4>  <br/>
+<form action="" method="POST">
+<center> <input type="email" id="email" placeholder="Enter email" name="recovery_email" required="required"><br/><br/>
+ <input type="submit"  name="lost_password" class="btn btn-success" value="Submit"/>    </center> 
+</form>
+
  </body>
 </html>
 
+
+
 <?php
+//require('db.php');
+if (isset($_POST["lost_password"])) {
 
-    require('db.php');
-    if (isset($_POST['submit'])) {
-    $fname =$_POST['fname'];
-    $lname =$_POST['lname'];
-    $ffname =$_POST['ffname'];
-    $mfname =$_POST['mfname'];
-    $dob =$_POST['dob'];
-    $gender =$_POST['gender'];
-    $address =$_POST['address'];
-    $weight =$_POST['weight'];
-    $birthplace =$_POST['birthplace'];
-    $birthtime =$_POST['birthtime'];
-    $maxloc =$_POST['maxloc'];
-    $t4=$_POST['t4'];
-    $t3=$_POST['t3'];
-    $t5=$_POST['t5'];
-    $t2=$_POST['t2'];
-    $sound=$_POST['sound'];
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    $cpwd=$_POST['cpwd'];
-	$hid=$_POST['hid'];
-	$rad=$_POST['rad'];
-    $image_name=$_POST['hid'];
-   
-//unique email
-   $query = "SELECT * FROM users WHERE email = '$email'";
-   $result =  $con->query($query);
-				
-				if( $result->num_rows > 0)
-				{
-					header("Location:signup.php?err=".urlencode("Email Already Present!!"));
-				}
-				else
-				{
-					
-   //unique id code
-     $a=substr($fname, 0, 2); // pre defined function of php
-     $b=substr($lname, 0, 2);
-     echo '<br>';
- $m=date('m'); // Get the month
-echo '<br>';
- $d=date('d'); // Get the date
-echo '<br>';
- $y=date('y'); // Get the Year
-echo '<br>';
-echo '<br>';
+    $email =$_POST['recovery_email'];
+   $sql = "SELECT id,note FROM `users` WHERE email='$email' AND confirmed='1' LIMIT 1";
+     $query = mysqli_query($con,$sql) or die(mysqli_error($con));
+    if(mysqli_num_rows($query)==1)
+    {
+      $row = mysqli_fetch_array($query);
+       $id = $row['id'];
+        $note = $row['note'];
 
-// Get the rows count
-$re="SELECT * FROM `users`";
-$id1 = mysqli_query($con, $re);
-
-$id2=mysqli_num_rows($id1);
-// $id2 = mysqli_fetch_array($id1);
-$invID = str_pad($id2, 4, '0', STR_PAD_LEFT);
+       if($note !="")
+       {
+          echo"Please check your email address we have already sent a password reset link";
+          exit();
+       }else{
 
 
- $sigana="sigana";
+        $random_note= time().rand(50000,100000);
+        $random_note= str_shuffle($random_note);
+         $update_note="UPDATE `users` SET `note`='$random_note' WHERE `email`='$email' AND id='$id'";
+          if(mysqli_query($con,$update_note))
+          {
 
- $id=$sigana.$a.$b.$d.$m.$y.$invID;
+              $to=$email;
+       $sub= "Reset Password";
+        $msg="Reset your password, and we'll get you on your way.
+To change your Sigana password, click on the given link or copy and paste the following link into your browser
+http://www.sigana.in/resetpassword.php?note=".$random_note."&id=".$id."&email=".$email;
+         $header="From: contactus@sigana.in";
+         
+            if(mail($to,$sub,$msg,$header))
+            {
+           echo"A mail with password reset link has sent to your email.<br/>";
+         
+           //echo"Email temporarily displayed here<br/>".$msg;
+           exit();
+            }
+          }
+       }
 
+    }else{
 
-if($fname && $email && $pwd)       {
-
-//random code
-		$confirmcode = rand();
-   
-   
-    $query="UPDATE `users` Set [sound]=left([sound],len([sound])-charindex('.',Reverse([sound])))";
-    $query = "INSERT into  `users` (`id`,`fname`,`lname`,`ffname`,`mfname`,`dob`,  `gender`,
-    `address`,`weight`,`birthplace`, `birthtime`,`maxloc`,`t4`,`t3`,`t5`,`t2`,`sound`,`email`,`pwd`,`cpwd`,`image_name`,`signup_date`,`role`,`confirmed`,`confirmcode`)
-     VALUES ('$id','$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$weight',
- 
-              '$birthplace', '$birthtime','$maxloc', '$t4','$t3','$t5','$t2','$sound','$email','$pwd', '$cpwd','$hid',NOW(),'client','0','$confirmcode')";
-
-	$result = mysqli_query($con,$query);
-
-    $message =
-		"Confirm Your Email
-		Click the link below to verify your account
-		http://www.sigana.in/emailconfirm.php?id=$id&code=$confirmcode
-		";
-		mail($email,"Email Verification",$message,"From: contactus@sigana.in");
-		
-		echo "<h4 align='center'>Registration Complete! Please confirm your email address</h4>";
-	}
-
+      echo"Your email address doesn't exist";
     }
-
-     }
-
-//$upFile = 'saveimages/'.$hid;
-//echo $upFile;
-$filename=$hid;  //imagename
-if($rad=='d')    //if image is taken from local device
-{
-	
-	$filepath = 'saveimages/';
-move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
 }
-//echo $filepath.$filename;
-
-?> 
- 
- 
-
-
-
-
-
-
+?>

@@ -3,15 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SignUp</title>
+<title>view users</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
-
-  
-  
-      
-      <link rel="stylesheet" href="viewusers.css">
+  <link rel="stylesheet" href="viewusers.css">
 
 <script type="text/javascript">
 
@@ -238,6 +234,8 @@ footer
 {background-color:#000;
 color:#FFF;
 }
+
+
 </style>
 </head>
 
@@ -251,7 +249,7 @@ color:#FFF;
 
     <ul class="nav navbar-nav navbar-right l1">
         <li><a href="#">Welcome admin!</a> </li>      
-    <li><a href="11.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
       </li>
@@ -270,10 +268,19 @@ color:#FFF;
 <br />
 <div class="lt" align="center"><b>Sigana</b>
 </div>
-
+   
 </div>
- <h1 align="center">Registered users on SIGANA</h1>
- <table align ="center" style="width:100%">
+
+              <div class="table-users">
+         <div class="header">REGISTERED USERS ON SIGANA
+         <form action="viewusers.php " method="POST">
+          <div style="text-align: right; text-color:gray;">
+            <input type="text" name="valueToSearch" placeholder="enter keyword" style="width:250px;">
+      <input type="submit" name="search" value="Search"></div></form></div>
+
+
+           <table cellspacing="0">
+
         <thead>  
   
         <tr>  
@@ -283,27 +290,49 @@ color:#FFF;
              <th><center><b>First Name</b></center></th>
              <th><center><b>Last Name</b></center></th>
              <th><center><b>E-mail</b></center></th>
+                <th><center><b>Files</b></center></th>
+                <th><center><b>Nail Image</b></center></th>
+              <th><center><b>Registration Date</b></center></th>
 
             <th><center><b>View</b></center></th>
               <th><center><b>Edit</b></center></th>
-              <th><center><b>Delete</b></center></th>
+              <th><b>Delete</b></th>
+
+
+               
         </tr>  
         </thead>
     <?php
         include("db.php");
-        
+
+        if(isset($_POST['search']))
+     {
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    $query = "SELECT * FROM `users` WHERE CONCAT(`fname`, `lname`,`signup_date`,`email`,`id`,`recordingfile`,`nail`) LIKE '%".$valueToSearch."%'";
+    $result = mysqli_query($con,$query);
   $count=1;
-        $view_users_query="select * from `users`";
-        $run=mysqli_query($con,$view_users_query);
-        while($row=mysqli_fetch_array($run))
-          {
+  if (mysqli_num_rows($result) > 0) {
+        while($row=mysqli_fetch_array($result))
+           {
+
             $id=$row[0];
             $fname=$row[1];
             $lname=$row[2];
             $email=$row[17];
             $pwd=$row[18];
             $image_name=$row[20];
-   ?>
+            $signup_date=$row[21];
+			$role=$row[22];
+         $recordingfile=$row[23];
+         $nail=$row[24];
+
+            
+			if($role=='client')
+			{
+             ?>
+
         <tr>                                                        
             <td><?php echo $count; ?></td>
             <td><?php echo $id;  ?></td>
@@ -311,17 +340,71 @@ color:#FFF;
             <td><?php echo $fname; ?></td>
             <td><?php echo $lname; ?></td>
             <td><?php echo $email;  ?></td>
-           
+            <td><?php echo $recordingfile; ?> </td>
+                <td><?php echo $nail; ?> </td>
+                       <td><?php echo $signup_date; ?> </td>
+
+
+            <td><a href="vp1.php?id=<?php echo $id ?>"><button class="btn btn-success" align="center" >View</button></a></td>
+             <td><a href="adminupdate1.php?id=<?php echo $id ?>"><button class="btn btn-warning" align="center" >Edit</button></a></td>
+              <td><a href="delete.php?del=<?php echo $id ?>"><button class="btn btn-danger">Delete</button></a></td>
+               
+        </tr>
+  
+        <?php  $count++;}
+        }}else{  ?>
+
+  <tr>
+            <td class="nouser" colspan="11"> <?php echo "No users found<br><br>";?></td>
+                </tr>
+ <?php }
+  }else{                          //while not in use of search  returns all the values
+  $query= "SELECT * FROM `users`";
+   $result = mysqli_query($con,$query);
+    $count=1;
+  while ($row = mysqli_fetch_array($result))
+     {
+
+            $id=$row[0];
+            $fname=$row[1];
+            $lname=$row[2];
+            $email=$row[17];
+            $pwd=$row[18];
+            $image_name=$row[20];
+            $signup_date=$row[21];
+			$role=$row[22];
+          $recordings=$row[23];
+            $nail=$row[24];
+
+			if($role=='client')
+			{
+             ?>
+
+        <tr>                                                        
+            <td><?php echo $count; ?></td>
+            <td><?php echo $id;  ?></td>
+            <td><img src="saveimages/<?php echo $image_name;?>"</td>
+            <td><?php echo $fname; ?></td>
+            <td><?php echo $lname; ?></td>
+            <td><?php echo $email;  ?></td>
+              
+                 <td><?php echo $recordings; ?> </td>
+                   <td><?php echo $nail; ?> </td>
+
+              <td><?php echo $signup_date; ?></td>
+
 
             <td><a href="vp1.php?id=<?php echo $id ?>"><button class="btn btn-success" align="center" >View</button></a></td>
              <td><a href="adminupdate1.php?id=<?php echo $id ?>"><button class="btn btn-warning" align="center" >Edit</button></a></td>
               <td><a href="delete.php?del=<?php echo $id ?>"><button class="btn btn-danger">Delete</button></a></td>
         </tr>
   
-        <?php $count++;} ?>  
-  
-    </table>  
-<footer align="center">
-Developed by Department of Computer Science & IT, University of Jammu</footer>
+        <?php  $count++;} }  } ?>
+
+
+    </table>
+
+     <div>
+
 </body>
 </html>

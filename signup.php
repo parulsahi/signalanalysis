@@ -1,4 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+session_start();
+if (isset($_SESSION['id']))
+{
+  header("Location: patientinf.php");
+}
+ ?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,8 +13,108 @@
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
+  <script src="jquery-1.11.3.js"></script>
+  <script src="webcam.min.js"></script>
 
 <script type="text/javascript">
+
+function myfun(myform)
+{  
+   var pattern_name= /^[a-zA-Z]+$/;    //pattern for name
+  // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;      //pattern for email
+   	
+if(!myform.fname.value.match(pattern_name))
+{
+ alert("enter valid name");
+ document.getElementById("fname").focus();
+ return false;
+ 
+}
+else if(!myform.lname.value.match(pattern_name))
+{   
+   alert("enter valid last name");
+   document.getElementById("lname").focus();
+   return false;
+}
+
+else if(!myform.ffname.value.match(pattern_name))
+{   
+   alert("enter valid father name");
+   document.getElementById("ffname").focus();
+   return false;
+}
+
+else if(!myform.mfname.value.match(pattern_name))
+{   
+   alert("enter valid mother name");
+   document.getElementById("mfname").focus();
+   return false;
+}
+else if(myform.gender.value=="")
+{   
+   alert("enter gender value");
+   document.getElementById("gender").focus();
+   return false;
+}
+else if(myform.weight.value<=0||myform.weight.value>500)
+{   
+   alert("enter correct weight");
+   document.getElementById("weight").focus();
+   return false;
+}
+else if(!myform.birthplace.value.match(pattern_name))
+{   
+   alert("enter correct place");
+   document.getElementById("birthplace").focus();
+   return false;
+}
+else if(!myform.maxloc.value.match(pattern_name))
+{   
+   alert("enter correct maximum location value");
+   document.getElementById("birthplace").focus();
+   return false;
+}
+/*else if(myform.t4.value!="Square"||myform.t4.value!="Spatulate"||myform.t4.value!="Conical"||myform.t4.value!="Knotty"||myform.t4.value!="Pointed"||myform.t4.value!="Element"||myform.t4.value!="Mixed")
+{   
+   alert("enter correct value for type of hand");
+   document.getElementById("t4").focus();
+   return false;
+}*/
+/*else if(myform.t4.value!="Square"||"Spatulate"||"Conical"||"Knotty"||"Pointed"||"Element"||"Mixed")
+{
+   alert("enter correct value for type of hand");
+   document.getElementById("t4").focus();
+   return false;
+}*/
+/*else if(myform.t3.value!="gray"||"green"||"brown"||"amethyst"||"blue"||"turquoise"||"pure hazel"||"true sapphire"||"honey")
+{   
+   alert("enter correct value for type of eye");
+   document.getElementById("t3").focus();
+   return false;
+}
+*/
+else if(myform.pwd.value!=myform.cpwd.value)
+{
+	 alert("password doesnot match");
+	 document.getElementById("pwd").focus();
+	 return false;
+}
+else if(myform.rad.value=="")
+{
+	 alert("upload image");
+	 document.getElementById("cam").focus();
+	 return false;
+}
+
+else
+   return true;
+   
+	}  
+
+
+
+
+
 
 function ShowPicture(id,Source) {
 if (Source=="1"){
@@ -77,44 +184,180 @@ var pp=document.getElementById("sound").value;
 var ps=pp.substring(0,pp.lastIndexOf('.'));
 document.getElementById("sound").value=ps;
 }*/
+function disp(val)
+{
+	 e=document.getElementById('email').value ;
+	 if(e=="")
+	 alert("enter email field");
+	 else
+ {
+	if(val=="device")
+	{
+	document.getElementById('cam').style.display='none';
+	document.getElementById('w').style.display='none';
+	document.getElementById("i1").style.display="block";
+	document.getElementById("i2").style.display="none";
+	document.getElementById("upload").style.display="none";
+	document.getElementById("another").style.display="none";
+	document.getElementById("snap").style.display="none";
+	document.getElementById("blah").style.display="block";
+	}
+    else
+	{
+	document.getElementById('l').style.display='none';
+    document.getElementById('device').style.display='none';
+	document.getElementById("i2").style.display="block";
+	document.getElementById("i1").style.display="none";
+	document.getElementById("blah").style.display="block";
+    }
+ }
+}
+
+/*displaying uploaded image*/
+function readURL(input) {
+	
+    document.getElementById("blah").style.display='block';
+        if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function (e) {
+         $('#blah')
+          .attr('src', e.target.result)
+          .width(200)
+          .height(200);
+           };
+        reader.readAsDataURL(input.files[0]);
+		}
+	 var pp = document.getElementById('email').value;
+	 var ps =pp.substring(0,pp.lastIndexOf('@'));
+	 var today = new Date();
+	 var t=today.getSeconds();
+	 var filename=ps+'_sigana_4'+t+'.jpg';		 
+ document.getElementById('hid').value=filename;  //name of image uploaded
+ //window.location='saveimage.php?username='+filename+'&b='+1;       
+		
+    }
+
+/*code for capturing image through webcam*/
+
+
+Webcam.set({
+			width: 200,
+			height:200,
+            image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+
+function setup() {
+			Webcam.reset();
+			Webcam.attach('#my_camera' );
+		}
+		
+function take_snapshot() {
+
+        document.getElementById("snap").style.display='none';
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri) {
+				// display results in page
+				
+        document.getElementById('my_camera').innerHTML = 
+			'<img src="'+data_uri+'"/>';
+			} );
+
+      document.getElementById("upload").style.display='block';
+      document.getElementById("another").style.display='block';			
+}
+
+
+function upload_pic()
+{  
+
+//var username = 'jhuckaby';
+
+     
+     var pp = document.getElementById('email').value;
+	 var ps =pp.substring(0,pp.lastIndexOf('@'));
+	 if(ps=="")
+	 alert('enter email field');
+	 else
+	 {
+	 var today = new Date();
+	 var t=today.getSeconds();
+	 
+	 var filename=ps+'_sigana_4'+t+'.jpg';
+	
+	document.getElementById('hid').value=filename;      //name of image uploaded
+	var x=document.getElementById('hid').value;
+	/*alert(filename);
+	alert(x);*/
+	//var image_fmt = 'jpeg';
+	//var url = 'saveimage.php?username=' + username + '&format=' + image_fmt;
+     Webcam.snap(function(data_uri) {
+				// display results in page
+				Webcam.upload( data_uri,'saveimage.php?username=' + filename,function(code, text) {
+					document.getElementById('my_camera').innerHTML = 
+				'<img src="'+text+'"/>';
+				} );	
+			} );
+Webcam.reset();
+    document.getElementById('l').style.display='none';
+    document.getElementById('w').style.display='none';
+    document.getElementById('choose').style.display='none';
+    document.getElementById('device').style.display='none';
+    document.getElementById('cam').style.display='none';
+    document.getElementById("i1").style.display="none";
+	document.getElementById("i2").style.display="none";
+	document.getElementById("upload").style.display="none";
+	document.getElementById("another").style.display="none";
+	document.getElementById("snap").style.display="none"; 
+    }
+
+}
+function another_pic()
+{
+Webcam.attach('#my_camera' );
+document.getElementById("snap").style.display='block';
+document.getElementById("upload").style.display='block';
+document.getElementById("another").style.display='none';
+}
 
 
 </script>
+
 <style type="text/css">
 
 
 #Styletaste {
-                  margin-left:400px;
+    margin-left:400px;
 	position:absolute;
 	visibility:hidden;
-	border:solid 1px #CCC;
+	border:solid 5px #040404;
 	padding:5px;
 
 }
 
 #Styleeye{
-                  margin-left:400px;
+    margin-left:400px;
 	position:absolute;
 	visibility:hidden;
-	border:solid 1px #CCC;
+	//border:solid 1px #CCC;
 	padding:5px;
 
 }
 
 #Stylehand{
-                  margin-left:400px;
+    margin-left:400px;
 	position:absolute;
 	visibility:hidden;
-	border:solid 1px #CCC;
+	border:solid 5px #040404;
 	padding:5px;
 
 }
 
 #Stylecolor{
-                  margin-left:400px;
+    margin-left:400px;
 	position:absolute;
 	visibility:hidden;
-	border:solid 1px #CCC;
+	border:solid 5px #040404;
 	padding:5px;
 
 }
@@ -231,10 +474,58 @@ document.getElementById("sound").value=ps;
 	font-size:40px;
 float:left;
 }
+
+input[type=text]{
+width:750px;
+}
+
+input[type=time]{
+width:750px;
+}
+
+input[type=number]{
+width:750px;
+}
+input[type=date]{
+width:750px;
+}
+#gender,#sound,#address{
+width:750px;
+}
+
+input[type=email]{
+width:750px;
+}
+
+
+input[type=password]{
+width:750px;
+}
+
+#my_camera{
+height:200px;
+width:200px;
+border:1px solid #f5f5f5;
+margin:5px auto;
+
+}
+
+.imagediv{
+height:350px;
+width:350px;
+float:right;
+/*border:2px solid;
+border-color:#ff2014;*/
+
+}
+
+footer
+{background-color:#000;
+color:#FFF;
+}
 </style>
 </head>
-
-<body bgcolor="#E6E6E6">
+<body bgcolor="#E6E6E6" onload='def()' >
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -242,18 +533,37 @@ float:left;
       <a class="navbar-brand" href="#"></a>
     </div>
 
-    <ul class="nav navbar-nav navbar-right l1">
-    <li><a href="11.php">Home</a></li>
-      <li>
-        <a href="#">About</a>
+    <?php
+    if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
+    ?>
+     <ul class="nav navbar-nav navbar-right l1">
+     <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
+
+     <li>
+        <a href="index.php">Home</a>   
       </li>
+      <li>
+        <a href="about.php">About</a>   
+      </li>
+      <li><a href="contact.php">Contact Us</a></li>
+		<li><a href="logout.php">Logout</a></li>
+   </ul>
+    <?php } else { ?>
+       <ul class="nav navbar-nav navbar-right l1">
 
-      <li><a href="#">Contact Us</a></li>
-		<li><a href="login.php">Login</a></li>
- <li><a href="signup.php">Sign up</a></li>
+     <li>
+        <a href="index.php">Home</a>   
+      </li>
+      <li>
+        <a href="about.php">About</a>
+      </li>
+       <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="login.php">Login</a></li>
+ <li class="active"><a href="signup.php">Sign up</a></li>     
     </ul>
-    </div>
-
+    <?php   }?>
+     </div>
+    
 </nav>
 
 
@@ -266,81 +576,77 @@ float:left;
 
 </div>
 
-  <?php
-require('db.php');
-if (isset($_POST['submit'])) {
-
-    $fname =$_POST['fname'];
-    $lname =$_POST['lname'];
-    $ffname =$_POST['ffname'];
-    $mfname =$_POST['mfname'];
-    $dob =$_POST['dob'];
-    $gender =$_POST['gender'];
-    $address =$_POST['address'];
-    $weight =$_POST['weight'];
-    $birthplace =$_POST['birthplace'];
-    $birthtime =$_POST['birthtime'];
-    $maxloc =$_POST['maxloc'];
-    $t4=$_POST['t4'];
-    $t3=$_POST['t3'];
-    $t5=$_POST['t5'];
-    $t2=$_POST['t2'];
-    $sound=$_POST['sound'];
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    $cpwd=$_POST['cpwd'];
-    $query="UPDATE `users` Set [sound]=left([sound],len([sound])-charindex('.',Reverse([sound])))";
-
- $query = "INSERT into  `users` (`fname`,`lname`,`ffname`,`mfname`,`dob`,  `gender`,
- `address`,`weight`,`birthplace`, `birthtime`,`maxloc`,`t4`,`t3`,`t5`,`t2`,`sound`,`email`,`pwd`,`cpwd`)
-
-VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$weight',
-              '$birthplace', '$birthtime','$maxloc', '$t4','$t3','$t5','$t2','$sound','$email','$pwd', '$cpwd')";
+  
 
 
-        $result = mysqli_query($con,$query);
-        if($result)
-        {
-         echo "<h3>You are registered successfully.</h3>
-        <br/>Click here to <a href='login.php'>Login</a>";
-        }
-        else
-        {
-         echo"error:", mysqli_error($con);
-          }
+<h3 align="center">Client Registration Form</h3>
 
 
-    }else{
-?>
-
-<h1 align="center">CLIENT REGISTRATION FORM</h1>
 <div class="container">
-  <form action="" method="POST" enctype="multipart/form-data" >
+
+<form action="signup1.php" method="POST" enctype="multipart/form-data" name="myform" onsubmit="return myfun(myform)">
+<div class="imagediv">
+<div id="my_camera"><img id="blah" src="images/dummy.png" height="200px" width="200px"/></div>   <!--for displaying video of webcam-->
+<table  align="center"  width="270">
+<th>
+<label style="margin-left:20px"; id="choose">Choose mode of photo upload </label><br/>
+</th>
+<tr>
+<td align="center" colspan="2">
+<input type="radio" name="rad"  onclick="disp(this.id)" id="device" value="d" /> <span id="l">Upload from system</span> <input type=radio name="rad"
+                        onclick="disp(this.id)" id="cam" value="w"/><span id="w">Webcam</span>   </label>
+</td>
+</tr>
+
+<tr  align="center" >
+<td colspan="2">
+<input type="file" accept="image/*"  onchange="readURL(this);" id="i1"  name="pic" style="display:none" /> 
+<input type="button" style="display:none;" value="Connect Webcam"  id="i2"  onClick="setup(); $(this).hide().next().show();" />
+<input type="button" value="Take Snapshot" onClick="take_snapshot();show();" style="display:none" id="snap" ><br/>
+</td>
+</tr>
+
+<tr  align="center" >
+<td colspan="2" >
+<input type="button" value="Take another picture" style="display:none;" id="another" onclick="another_pic()"><br />
+<input type="button" value="Upload" style="display:none;" id="upload" onclick="upload_pic()">
+</td>
+</tr>
+</table>
+
+
+
+
+</div>
   <br/>
   <br />
+  
    <div class="form-group">
-     <label for="Firstname">Name:</label>
-       <input type="text" class="form-control" id="fname" placeholder="Enter firstname" name="fname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
-      <br>
-       <input type="text" class="form-control" id="lname" placeholder="Enter lastname" name="lname" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Firstname">First Name </label>
+       <input type="text" class="form-control" id="fname" required placeholder="Enter firstname" name="fname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+      </div>
+      <div>
+      <label for="Lastname">Last Name </label>
+       <input type="text" class="form-control" id="lname" required placeholder="Enter lastname" name="lname" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
+    <br/>
     <div class="form-group">
-     <label for="Firstname">Father's Name:</label>
-       <input type="text" class="form-control" id="ffname" placeholder="Enter father's name" name="ffname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="Firstname">Father's Name </label>
+       <input type="text" class="form-control" id="ffname" required placeholder="Enter father's name" name="ffname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
 
     </div>
      <div class="form-group">
-     <label for="Firstname">Mother's Name:</label>
-       <input type="text" class="form-control" id="mfname" placeholder="Enter mother's name" name="mfname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="Firstname">Mother's Name </label>
+       <input type="text" class="form-control" id="mfname" required placeholder="Enter mother's name" name="mfname"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
      </div>
      <div class="form-group">
-     <label for="Date of Birth">Date of Birth:</label>
-       <input type="date" class="form-control" id="dob"  name="dob"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Date of Birth">Date of Birth </label>
+       <input type="date" class="form-control" id="dob" required name="dob" min="1918-01-01" max="2018-01-30" required onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
 
       <div class="form-group">
-     <label for="Gender">Gender:</label>
-     <select value="" id="gender" class="form-control"  name="gender" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="Gender">Gender </label>
+     <select value="" id="gender" class="form-control" required name="gender" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
    <option value="">- Choose -</option>
   <option value="male">Male</option>
   <option value="female">Female</option>
@@ -348,40 +654,41 @@ VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$wei
    </div>
 
     <div class="form-group">
-     <label for="Address">Address</label>
-       <input type="text" class="form-control" id="address" placeholder="Enter address" name="address"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Address">Address </label>
+       <textarea class="form-control" id="address" rows="4" required placeholder="Enter address" name="address"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+</textarea>
     </div>
      <div class="form-group">
-     <label for="weight">Weight:</label>
-      <input type="number" class="form-control" id="weight" placeholder="Enter your weight" name="weight"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="weight">Weight </label>
+      <input type="number" class="form-control" id="weight" required placeholder="Enter your weight" name="weight"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
 
     <div class="form-group">
-     <label for="Birth Place">Birth Place:</label>
-      <input type="text" class="form-control" id="birthplace" placeholder="Enter birthplace" name="birthplace"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Birth Place">Birth Place </label>
+      <input type="text" class="form-control" id="birthplace" required placeholder="Enter birthplace" name="birthplace"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-     <label for="Birth Time">Birth Time:</label>
-      <input type="time" class="form-control" id="birthtime" placeholder="Enter birthtime" name="birthtime"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Birth Time">Birth Time </label>
+      <input type="time" class="form-control" id="birthtime" required placeholder="Enter birthtime" name="birthtime"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-     <label for="Location where you lived maximum time">Place where you stayed the longest:</label>
-      <input type="text" class="form-control" id="maxloc" placeholder="Enter location" name="maxloc"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
+     <label for="Location where you lived maximum time">Place where you stayed the longest </label>
+      <input type="text" class="form-control" id="maxloc" required placeholder="Enter location" name="maxloc"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
     </div>
 
     <div class="form-group">
-     <label for="Hands">Choose type of your hands:</label>
+     <label for="Hands">Choose type of your hands </label>
 
      <input type="text" class="form-control" name="t4"  id="t4" onfocus="(ShowPicture('Stylehand',1),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))">
 <div id="Stylehand"><img src="images/Types-of-Hand.png" border="1" width="650" height="400" alt="hand" usemap="#handcollage">
 <map name="handcollage">
-  <area shape="rect" coords="0,0,80,400" alt="square" name="square" href="#" title="square" id="square" onclick="hand(this.id)";>
-<area shape="rect" coords="80,0,180,400" alt="spatulate" name="spatulate" href="#" title="spatulate" id="spatulate" onclick="hand(this.id)";>
-<area shape="rect" coords="180,0,270,400" alt="conical" name="conical" href="#" title="conical" id="conical" onclick="hand(this.id)";>
-<area shape="rect" coords="270,0,360,400" alt="knotty" name="knotty" href="#" title="knotty" id="knotty" onclick="hand(this.id)";>
-<area shape="rect" coords="360,0,450,400" alt="pointed" name="pointed" href="#" title="pointed" id="pointed" onclick="hand(this.id)";>
-<area shape="rect" coords="450,0,560,400" alt="elemental" name="elemental" href="#" title="elemental" id="elemental" onclick="hand(this.id)";>
-<area shape="rect" coords="560,0,650,400" alt="mixed" name="mixed" href="#" title="mixed" id="mixed" onclick="hand(this.id)";>
+  <area shape="rect" coords="0,0,80,400" alt="Square" name="Square"  title="Square" id="Square" onclick="hand(this.id)";>
+<area shape="rect" coords="80,0,180,400" alt="Spatulate" name="Spatulate"  title="Spatulate" id="Spatulate" onclick="hand(this.id)";>
+<area shape="rect" coords="180,0,270,400" alt="Conical" name="Conical"  title="Conical" id="Conical" onclick="hand(this.id)";>
+<area shape="rect" coords="270,0,360,400" alt="Knotty" name="Knotty"  title="Knotty" id="Knotty" onclick="hand(this.id)";>
+<area shape="rect" coords="360,0,450,400" alt="Pointed" name="Pointed"  title="Pointed" id="Pointed" onclick="hand(this.id)";>
+<area shape="rect" coords="450,0,560,400" alt="Elemental" name="Elemental"  title="Elemental" id="Elemental" onclick="hand(this.id)";>
+<area shape="rect" coords="560,0,650,400" alt="Mixed" name="Mixed"  title="Mixed" id="Mixed" onclick="hand(this.id)";>
 </map>
 </div>
 
@@ -389,19 +696,19 @@ VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$wei
 
     </div>
     <div class="form-group">
-     <label for="Eyes">Choose type of your eyes:</label>
-     <input type="text" class="form-control" name="t3"  id="t3" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',1),ShowPicture('Styletaste',0))">
-<div id="Styleeye"><img src="images\fresh-look-color-blends.jpg" border="1" width="550" height="407" alt="eye" usemap="#eyecollage">
+     <label for="Eyes">Choose type of your eyes </label>
+     <input type="text" class="form-control" name="t3"  id="t3"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',1),ShowPicture('Styletaste',0))">
+<div id="Styleeye"><img src="images\eyes.jpg" border="1" width="550" height="407" alt="eye" usemap="#eyecollage">
 <map name="eyecollage">
-  <area shape="rect" coords="0,0,180,130" alt="gray" name="gray" href="#" title="gray" id="gray" onclick="eye(this.id)";>
-  <area shape="rect" coords="180,0,370,130" alt="green" href="#" name="green"  title="green" id="green" onclick="eye(this.id)";>
-  <area shape="rect" coords="370,0,550,130" alt="brown" href="#" name="brown"  title="brown" id="brown" onclick="eye(this.id)";>
-  <area shape="rect" coords="0,130,180,260" alt="amethyst" href="#" name="amethyst"  title="amethyst" id="amethyst" onclick="eye(this.id)";>
-  <area shape="rect" coords="180,130,370,260" alt="blue" href="#" name="blue"  title="blue" id="blue" onclick="eye(this.id)";>
-  <area shape="rect" coords="370,130,550,260" alt="turquoise" href="#" name="turquoise"  title="turquoise" id="turquoise" onclick="eye(this.id)";>
-  <area shape="rect" coords="0,270,180,406" alt="hazel" href="#" name="hazel"  title="hazel" id="hazel" onclick="eye(this.id)";>
-  <area shape="rect" coords="180,270,370,406" alt="sapphire" href="#" name="sapphire"  title="sapphire" id="sapphire" onclick="eye(this.id)";>
-  <area shape="rect" coords="370,270,550,406" alt="honey" href="#" name="honey"  title="honey" id="honey" onclick="eye(this.id)";>
+  <area shape="rect" coords="0,0,180,130" alt="gray" name="gray"  title="gray" id="gray" onclick="eye(this.id)";>
+  <area shape="rect" coords="180,0,370,130" alt="green"  name="green"  title="green" id="green" onclick="eye(this.id)";>
+  <area shape="rect" coords="370,0,550,130" alt="brown"  name="brown"  title="brown" id="brown" onclick="eye(this.id)";>
+  <area shape="rect" coords="0,130,180,260" alt="amethyst"  name="amethyst"  title="amethyst" id="amethyst" onclick="eye(this.id)";>
+  <area shape="rect" coords="180,130,370,260" alt="blue"  name="blue"  title="blue" id="blue" onclick="eye(this.id)";>
+  <area shape="rect" coords="370,130,550,260" alt="turquoise"  name="turquoise"  title="turquoise" id="turquoise" onclick="eye(this.id)";>
+  <area shape="rect" coords="0,270,180,406" alt="hazel"  name="hazel"  title="hazel" id="hazel" onclick="eye(this.id)";>
+  <area shape="rect" coords="180,270,370,406" alt="sapphire"  name="sapphire"  title="sapphire" id="sapphire" onclick="eye(this.id)";>
+  <area shape="rect" coords="370,270,550,406" alt="honey"  name="honey"  title="honey" id="honey" onclick="eye(this.id)";>
 </map>
 </div>
 
@@ -409,23 +716,23 @@ VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$wei
 
     </div>
     <div class="form-group">
-     <label for="Color">Choose any color:</label>
+     <label for="Color">Choose any color </label>
 
-      <input type="text" class="form-control" name="t5"  id="t5" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0),ShowPicture('Stylecolor',1))">
+      <input type="text" class="form-control" name="t5"  id="t5"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0),ShowPicture('Stylecolor',1))">
 <div id="Stylecolor"><img src="images\color.png" border="1" width="400" height="400" alt="eye" usemap="#colorcollage">
 <map name="colorcollage">
-  <area shape="poly" coords="152,20,246,21,230,88,170,88,152,20" alt="orange" name="orange" href="#" title="orange" id="orange" onclick="color(this.id)";>
-  <area shape="poly" coords="247,21,330,68,280,120,228,90,247,21" alt="saffron" name="saffron" href="#" title="saffron" id="saffron" onclick="color(this.id)";>
-  <area shape="poly" coords="330,68,377,152,308,170,280,120,330,68" alt="yellow" name="yellow" href="#" title="yellow" id="yellow" onclick="color(this.id)";>
-  <area shape="poly" coords="379,151,377,247,310,230,310,168,379,151" alt="light-yellow" name="light-yellow" href="#" title="light-yellow" id="light-yellow" onclick="color(this.id)";>
-  <area shape="poly" coords="310,230,377,248,331,331,280,281,310,230" alt="lime" name="lime" href="#" title="lime" id="lime" onclick="color(this.id)";>
-  <area shape="poly" coords="280,280,330,331,246,377,231,310,280,280" alt="green" name="green" href="#" title="green" id="green" onclick="color(this.id)";>
-  <area shape="poly" coords="228,310,246,376,152,378,170,309,228,310" alt="light-blue" name="light-blue" href="#" title="light-blue" id="light-blue" onclick="color(this.id)";>
-  <area shape="poly" coords="170,311,152,378,68,330,118,281,170,311" alt="blue" name="blue" href="#" title="blue" id="blue" onclick="color(this.id)";>
-  <area shape="poly" coords="118,280,70,330,21,247,89,230,118,280" alt="indigo" name="indigo" href="#" title="indigo" id="indigo" onclick="color(this.id)";>
-  <area shape="poly" coords="90,229,21,248,21,151,89,169,90,229" alt="violet" name="violet" href="#" title="violet" id="violet" onclick="color(this.id)";>
-  <area shape="poly" coords="90,168,22,151,70,68,119,120,90,168" alt="magenta" name="magenta" href="#" title="magenta" id="magenta" onclick="color(this.id)";>
-  <area shape="poly" coords="119,118,68,69,152,20,170,90,119,118" alt="red" name="red" href="#" title="red" id="red" onclick="color(this.id)";>
+  <area shape="poly" coords="152,20,246,21,230,88,170,88,152,20" alt="orange" name="orange"  title="orange" id="orange" onclick="color(this.id)";>
+  <area shape="poly" coords="247,21,330,68,280,120,228,90,247,21" alt="saffron" name="saffron"  title="saffron" id="saffron" onclick="color(this.id)";>
+  <area shape="poly" coords="330,68,377,152,308,170,280,120,330,68" alt="yellow" name="yellow"  title="yellow" id="yellow" onclick="color(this.id)";>
+  <area shape="poly" coords="379,151,377,247,310,230,310,168,379,151" alt="light-yellow" name="light-yellow"  title="light-yellow" id="light-yellow" onclick="color(this.id)";>
+  <area shape="poly" coords="310,230,377,248,331,331,280,281,310,230" alt="lime" name="lime"  title="lime" id="lime" onclick="color(this.id)";>
+  <area shape="poly" coords="280,280,330,331,246,377,231,310,280,280" alt="green" name="green"  title="green" id="green" onclick="color(this.id)";>
+  <area shape="poly" coords="228,310,246,376,152,378,170,309,228,310" alt="light-blue" name="light-blue"  title="light-blue" id="light-blue" onclick="color(this.id)";>
+  <area shape="poly" coords="170,311,152,378,68,330,118,281,170,311" alt="blue" name="blue"  title="blue" id="blue" onclick="color(this.id)";>
+  <area shape="poly" coords="118,280,70,330,21,247,89,230,118,280" alt="indigo" name="indigo"  title="indigo" id="indigo" onclick="color(this.id)";>
+  <area shape="poly" coords="90,229,21,248,21,151,89,169,90,229" alt="violet" name="violet"  title="violet" id="violet" onclick="color(this.id)";>
+  <area shape="poly" coords="90,168,22,151,70,68,119,120,90,168" alt="magenta" name="magenta"  title="magenta" id="magenta" onclick="color(this.id)";>
+  <area shape="poly" coords="119,118,68,69,152,20,170,90,119,118" alt="red" name="red"  title="red" id="red" onclick="color(this.id)";>
 </map>
 </div>
 
@@ -433,23 +740,23 @@ VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$wei
     </div>
 
      <div class="form-group">
-     <label for="Taste">Choose any taste:</label>
+     <label for="Taste">Choose any taste </label>
       <input type="text" class="form-control" name="t2"  id="t2" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',1))">
 <div id="Styletaste"><img src="images\collage.jpg" border="1" width="550" height="407" alt="taste" usemap="#tastecollage">
 <map name="tastecollage">
-  <area shape="rect" coords="0,0,165,200" alt="bitter" name="bitter" href="#" title="bitter" id="bitter" onclick="taste(this.id)";>
-  <area shape="rect" coords="0,200,165,406" alt="spicy" href="#" name="spicy"  title="spicy" id="spicy" onclick="taste(this.id)";>
-  <area shape="rect" coords="165,0,385,406" alt="salt" href="#" name="salt"  title="salt" id="salt" onclick="taste(this.id)";>
-  <area shape="rect" coords="385,0,550,200" alt="sour" href="#" name="sour"  title="sour" id="sour" onclick="taste(this.id)";>
-  <area shape="rect" coords="385,200,550,406" alt="sweet" href="#" name="sweet"  title="sweet" id="sweet" onclick="taste(this.id)";>
+  <area shape="rect" coords="0,0,165,200" alt="bitter" name="bitter"  title="bitter" id="bitter" onclick="taste(this.id)";>
+  <area shape="rect" coords="0,200,165,406" alt="spicy"  name="spicy"  title="spicy" id="spicy" onclick="taste(this.id)";>
+  <area shape="rect" coords="165,0,385,406" alt="salt"  name="salt"  title="salt" id="salt" onclick="taste(this.id)";>
+  <area shape="rect" coords="385,0,550,200" alt="sour"  name="sour"  title="sour" id="sour" onclick="taste(this.id)";>
+  <area shape="rect" coords="385,200,550,406" alt="sweet"  name="sweet"  title="sweet" id="sweet" onclick="taste(this.id)";>
 </map>
 </div>
  </div>
 
 
  <div class="form-group">
-     <label for="sound">Choose music of your choice:</label>
-    <select id="sound" class="form-control"  name="sound" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))" ;>
+     <label for="sound">Choose music of your choice </label>
+    <select id="sound" class="form-control"  name="sound" required onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))" ;>
   <option value="">- Select track -</option>
   <option value="images/SleepAway.mp3">Flying in clouds</option>
   <option value="images/Kalimba.mp3">Chilling on beach</option>
@@ -463,21 +770,26 @@ VALUES ('$fname','$lname','$ffname','$mfname','$dob','$gender', '$address','$wei
 
 
     <div class="form-group">
-     <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+     <label for="email">Email </label>
+      <input type="email" class="form-control" id="email" required placeholder="Enter email" name="email"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
     <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter new password" name="pwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+      <label for="pwd">Password </label>
+      <input type="password" class="form-control" id="pwd" minlength="8" required placeholder="Enter new password" name="pwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
         <div class="form-group">
-      <label for="pwd">Confirm Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Confirm your password" name="cpwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
+      <label for="pwd">Confirm Password </label>
+      <input type="password" class="form-control" id="cpwd" minlength="8" required placeholder="Confirm your password" name="cpwd"  onfocus="(ShowPicture('Stylehand',0),ShowPicture('Stylecolor',0),ShowPicture('Styleeye',0),ShowPicture('Styletaste',0))">
     </div>
-    <input type="submit"  name="submit" class="btn btn-success" value="Submit" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))"/>
-
+    <input type="submit"  name="submit" class="btn btn-success" value="Submit" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))" />
+<input type="text" id="hid"  style="display:none;" name="hid" />
       </form>
  </div>
-<?php } ?>
+ 
+<br/>
+<br/>
+<br/>
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>

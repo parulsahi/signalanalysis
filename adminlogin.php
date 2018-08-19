@@ -131,7 +131,7 @@ float:left;
     </div>
    
     <ul class="nav navbar-nav navbar-right l1">
-    <li><a href="11.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
       <li>
         <a href="about.html">About</a>   
       </li>
@@ -195,7 +195,7 @@ if (isset($_POST['adminlogin'])){
     </div>
     <input type="submit"  name="adminlogin" class="btn btn-success" value="Submit"/>
   </form>
- <p>Not an admin? <a href='login.php'>Login as a user</a></p>
+
 </div>
 
 

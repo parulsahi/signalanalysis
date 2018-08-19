@@ -1,6 +1,15 @@
+
 <?php
 require('db.php');
-include("auth.php");
+
+session_start();
+if(!isset($_SESSION["id"])){
+echo "<script>
+alert('Please login first');
+window.location.href='login.php';
+</script>";
+ }
+
 $id = $_SESSION['id'];
 $fname = $_SESSION['fname'];
 $query = "SELECT * from `users` WHERE id='".$id."'";
@@ -40,7 +49,7 @@ $id=$res['id'];
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Update</title>
+<title>view profile</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
@@ -270,6 +279,7 @@ document.getElementById("sound").value=ps;
     font-size:40px;
 float:left;
 }
+
 </style>
 </head>
 
@@ -281,18 +291,38 @@ float:left;
       <a class="navbar-brand" href="#"></a>
     </div>
 
-    <ul class="nav navbar-nav navbar-right l1">
-        <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
-    <li><a href="11.php">Home</a></li>
-      <li>
-        <a href="about.html">About</a>
+    <?php
+    if (isset($_SESSION["id"])) {
+    ?>
+     <ul class="nav navbar-nav navbar-right l1">
+     <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
+
+     <li>
+        <a href="index.php">Home</a>
       </li>
+      <li>
+        <a href="about.php">About</a>
+      </li>
+      <li><a href="contact.php">Contact Us</a></li>
+		<li><a href="logout.php">Logout</a></li>
+   </ul>
+    <?php } else { ?>
+       <ul class="nav navbar-nav navbar-right l1">
+ 
 
-      <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="logout.php">Logout</a></li>
+     <li>
+        <a href="index.php">Home</a>   
+      </li>
+       <li>
+        <a href="about.php">About</a>
+      </li>
+       <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="login.php">Login</a></li>
+ <li><a href="signup.php">Sign up</a></li>     
     </ul>
-    </div>
-
+    <?php   }?>
+     </div>
+    
 </nav>
 
 
@@ -308,7 +338,9 @@ float:left;
 
  <table align="center" >  <caption><center><strong> Profile: <?php echo $fname; ?> <?php echo $lname; ?></strong></center></caption>
 
-   <tr><td></td><td></td><td></td><td rowspan="6"><img src="saveimages/<?php echo $image_name;?>" width="120" height="120" style="border:1px solid black;"></td></tr>
+  <tr><td></td><td></td><td></td><td rowspan="6"><img src="saveimages/<?php echo $image_name;?>" width="120" height="120" style="border:1px solid black;"></td></tr>
+         <tr><td><b>User Id</b></td><td><b> : </b></td><td><?php echo $id; ?></td></tr>
+        <tr><td><b>First Name</b></td><td><b> : </b></td><td><?php echo $fname; ?></td></tr>
         <tr><td><b>First Name</b></td><td><b> : </b></td><td><?php echo $fname; ?></td></tr>
         <tr><td><b>Last Name</b></td><td> <b>:</b> </td><td><?php echo $lname; ?></td></tr>
         <tr><td><b>Father's Name</b></td><td><b> :</b> </td><td><?php echo $ffname; ?></td></tr>
@@ -333,7 +365,8 @@ float:left;
     <form action="update.php" method="POST" enctype="multipart/form-data">
   <br/>
   <br />
- <center> <button type="submit"   class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Edit Profile</button>  </center>
+ <center> <button type="submit"   class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Edit Profile</button>
+  <input type="button"  onclick="location.href='patientinf.php';" value="Back" class="btn btn-warning" />    </center>
   </form>
 
 

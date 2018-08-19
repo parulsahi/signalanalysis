@@ -1,5 +1,5 @@
-body {
-  background-color: #91ced4;
+                     body {
+ background:linear-gradient(to right,#D2DDB2,#C0D6AF,#DDE4B8,#D2DDB2,#DDE4B8,#C0D6AF,#D2DDB2);
 }
 body * {
   -webkit-box-sizing: border-box;
@@ -12,24 +12,23 @@ body * {
   font-size: 1.5em;
   padding: 1rem;
   text-align: center;
-  text-transform: uppercase;
+ 
 }
-
-/*img {
-  border-radius: 50%;
+img {
+ 
   height: 60px;
   width: 60px;
-}*/
+}
 
 .table-users {
   border: 1px solid #327a81;
   border-radius: 10px;
   -webkit-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-  max-width: calc(100% - 2em);
+
   margin: 1em auto;
   overflow: hidden;
-  width: 800px;
+  width: 100%;
 }
 
 table {
@@ -85,18 +84,7 @@ table tr:nth-child(2n+1) {
     left: 0;
     position: absolute;
   }
-  td:nth-child(2):before {
-    content: 'Name:';
-  }
-  td:nth-child(3):before {
-    content: 'Email:';
-  }
-  td:nth-child(4):before {
-    content: 'Phone:';
-  }
-  td:nth-child(5):before {
-    content: 'Comments:';
-  }
+
 
   tr {
     padding: 10px 0;
@@ -108,8 +96,8 @@ table tr:nth-child(2n+1) {
 }
 @media screen and (max-width: 500px) {
   .header {
-    background-color: transparent;
-    color: white;
+    background-color: white;
+    color: grey;
     font-size: 2em;
     font-weight: 700;
     padding: 0;
@@ -117,7 +105,7 @@ table tr:nth-child(2n+1) {
   }
 
   img {
-    border: 3px solid;
+   border: 3px solid;
     border-color: #daeff1;
     height: 100px;
     margin: 0.5rem 0;
@@ -163,5 +151,20 @@ table tr:nth-child(2n+1) {
     -webkit-box-shadow: none;
             box-shadow: none;
     overflow: visible;
+    width:100%;
   }
+}
+table tr td.nouser
+{
+ text-align:center;
+ color: red;
+ font-size: 25px;
+}
+
+input[type=text] {
+     color:gray;
+          }
+input[type=submit] {
+    color:grey;
+   
 }

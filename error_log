@@ -1,0 +1,256 @@
+[04-Aug-2018 11:03:29 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 15
+[04-Aug-2018 11:03:29 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 22
+[04-Aug-2018 16:31:06 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 80
+[04-Aug-2018 16:31:11 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 80
+[04-Aug-2018 16:33:50 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 80
+[04-Aug-2018 16:36:13 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 80
+[04-Aug-2018 16:37:03 Etc/GMT] PHP Notice:  Undefined variable: db in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 20
+[04-Aug-2018 16:37:03 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 20
+[04-Aug-2018 20:15:42 Etc/GMT] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE) in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 11
+[04-Aug-2018 20:15:48 Etc/GMT] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE) in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 11
+[04-Aug-2018 20:17:29 Etc/GMT] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE) in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 11
+[04-Aug-2018 20:18:55 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 30
+[04-Aug-2018 20:19:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 30
+[04-Aug-2018 20:22:08 Etc/GMT] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 30
+[05-Aug-2018 12:04:50 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 15
+[05-Aug-2018 12:04:50 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 22
+[05-Aug-2018 12:12:26 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 15
+[05-Aug-2018 12:12:26 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 22
+[05-Aug-2018 19:33:13 Etc/GMT] PHP Parse error:  syntax error, unexpected 'Thank' (T_STRING) in /home/crossws8/public_html/www.sigana.in/forgotpassword.php on line 242
+[05-Aug-2018 19:33:17 Etc/GMT] PHP Parse error:  syntax error, unexpected 'Thank' (T_STRING) in /home/crossws8/public_html/www.sigana.in/forgotpassword.php on line 242
+[05-Aug-2018 20:12:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 256
+[05-Aug-2018 20:16:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 256
+[05-Aug-2018 20:16:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 256
+[05-Aug-2018 20:16:32 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home/crossws8/public_html/www.sigana.in/resetpassword.php on line 256
+[06-Aug-2018 07:50:24 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/upload.php on line 4
+[06-Aug-2018 07:50:24 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/upload.php on line 32
+[06-Aug-2018 08:04:39 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 15
+[06-Aug-2018 08:04:39 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 22
+[06-Aug-2018 08:55:48 Etc/GMT] PHP Notice:  Undefined index: rad in /home/crossws8/public_html/www.sigana.in/signup1.php on line 229
+[07-Aug-2018 15:53:05 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 405
+[07-Aug-2018 15:53:08 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 405
+[07-Aug-2018 15:53:40 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 405
+[07-Aug-2018 15:57:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 11
+[07-Aug-2018 15:58:15 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 11
+[07-Aug-2018 16:00:02 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 11
+[07-Aug-2018 16:00:13 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 11
+[07-Aug-2018 16:02:15 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 11
+[07-Aug-2018 16:02:20 Etc/GMT] PHP Parse error:  syntax error, unexpected '<' in /home/crossws8/public_html/www.sigana.in/picsearchproposed2.php on line 11
+[07-Aug-2018 16:06:46 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:06:50 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:07:04 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:07:22 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:07:36 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:14 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:23 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:28 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:34 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:43 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:08:57 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:09:49 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 407
+[07-Aug-2018 16:32:43 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 410
+[07-Aug-2018 16:33:07 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 410
+[07-Aug-2018 16:33:16 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 410
+[07-Aug-2018 16:33:40 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 341
+[07-Aug-2018 16:34:05 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 341
+[07-Aug-2018 16:34:24 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/crossws8/public_html/www.sigana.in/login.php on line 341
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 338
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 340
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 342
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 343
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 344
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[07-Aug-2018 16:47:16 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 365
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 338
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 340
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 342
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 343
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 344
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[07-Aug-2018 21:56:42 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 365
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 338
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 340
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 342
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 343
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 344
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[11-Aug-2018 11:28:04 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 365
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 338
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 340
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 342
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 343
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 344
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[11-Aug-2018 11:28:58 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 365
+[11-Aug-2018 11:30:42 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/pictures1.php on line 337
+[11-Aug-2018 11:30:42 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/pictures1.php on line 424
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 340
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 341
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 342
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 343
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 344
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 345
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 346
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 347
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 348
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 349
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 350
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 351
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 352
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 353
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 354
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 355
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 356
+[11-Aug-2018 11:54:56 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 357
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 340
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 341
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 342
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 343
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 344
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 345
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 346
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 347
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 348
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 349
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 350
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 351
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 352
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 353
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 354
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 355
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 356
+[11-Aug-2018 11:56:55 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 357
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 338
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 340
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: fname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 341
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 342
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 343
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 344
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 345
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 346
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 347
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 348
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 349
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 350
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 351
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 352
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 353
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 354
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 355
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 356
+[11-Aug-2018 11:57:03 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/picsearchnormal.php on line 357
+[11-Aug-2018 16:58:06 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 15
+[11-Aug-2018 16:58:06 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 22
+[11-Aug-2018 17:12:22 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 206
+[11-Aug-2018 17:12:22 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 213
+[11-Aug-2018 17:22:48 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 198
+[11-Aug-2018 17:22:48 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 205
+[11-Aug-2018 17:26:44 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 198
+[11-Aug-2018 17:26:44 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 205
+[11-Aug-2018 18:41:40 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 198
+[11-Aug-2018 18:41:40 Etc/GMT] PHP Notice:  Undefined variable: row in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 205
+[11-Aug-2018 18:41:50 Etc/GMT] PHP Notice:  Undefined index: confirmcode in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 198
+[11-Aug-2018 18:41:50 Etc/GMT] PHP Notice:  Undefined variable: db_code in /home/crossws8/public_html/www.sigana.in/emailconfirm.php on line 207
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 339
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 341
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 358
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 359
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 360
+[19-Aug-2018 08:31:27 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 368
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 13
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined index: fname in /home/crossws8/public_html/www.sigana.in/vp.php on line 14
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 339
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: image_name in /home/crossws8/public_html/www.sigana.in/vp.php on line 341
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: lname in /home/crossws8/public_html/www.sigana.in/vp.php on line 345
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: ffname in /home/crossws8/public_html/www.sigana.in/vp.php on line 346
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: mfname in /home/crossws8/public_html/www.sigana.in/vp.php on line 347
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: dob in /home/crossws8/public_html/www.sigana.in/vp.php on line 348
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: gender in /home/crossws8/public_html/www.sigana.in/vp.php on line 349
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: email in /home/crossws8/public_html/www.sigana.in/vp.php on line 350
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: address in /home/crossws8/public_html/www.sigana.in/vp.php on line 351
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: weight in /home/crossws8/public_html/www.sigana.in/vp.php on line 352
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: birthplace in /home/crossws8/public_html/www.sigana.in/vp.php on line 353
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: birthtime in /home/crossws8/public_html/www.sigana.in/vp.php on line 354
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: maxloc in /home/crossws8/public_html/www.sigana.in/vp.php on line 355
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: t4 in /home/crossws8/public_html/www.sigana.in/vp.php on line 356
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: t3 in /home/crossws8/public_html/www.sigana.in/vp.php on line 357
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: t5 in /home/crossws8/public_html/www.sigana.in/vp.php on line 358
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: t2 in /home/crossws8/public_html/www.sigana.in/vp.php on line 359
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined variable: sound in /home/crossws8/public_html/www.sigana.in/vp.php on line 360
+[19-Aug-2018 08:34:19 Etc/GMT] PHP Notice:  Undefined index: id in /home/crossws8/public_html/www.sigana.in/vp.php on line 368

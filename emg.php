@@ -1,23 +1,119 @@
 <?php
 session_start();
-if (isset($_SESSION['id']))
-{
-  header("Location:patientinf.php");
-}
- ?>
-
+require('db.php');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Signal Analysis and Interpretation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biomedical Signals</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
 
+
+
+
+
+
+
 <style type="text/css">
+
+
+#myimg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myimg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: relative;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
 .sidenav {
-    height:600px;
+    height:700px;
     width:15%;
     top:47%;
     left:0;
@@ -39,7 +135,7 @@ if (isset($_SESSION['id']))
     color: #06F;
 }
 .right {
-    height:600px;
+    height:700px;
     width:15%;
     top:47%;
     right:0;
@@ -49,12 +145,11 @@ if (isset($_SESSION['id']))
 }
 
 .right a {
-     padding:15% 15% 15% 15%;
+    padding:15% 15% 15% 15%;
     text-decoration:blink;
-    font-size:20px;
+    font-size:25px;
     color:#333;
    /* display:block;*/
-   font-family:Times New Roman;
 }
 
 .right a:hover {
@@ -118,40 +213,44 @@ if (isset($_SESSION['id']))
 }
 .main
 {
-	height:600px;
+	height:700px;
 	width:70%;
 	left:15%;
 	right:15%;
 	top:47%;
-	//border:2px strong #F0C;
+	border:2px strong #F0C;
 	background:linear-gradient(to right,#D2DDB2,#C0D6AF,#DDE4B8,#D2DDB2,#DDE4B8,#C0D6AF,#D2DDB2);
-	//font-size:40px;
+	font-size:40px;
 float:left;
-
 }
-
-input[type=email]{
-width:850px;
+h4
+{ 
+padding-left:2%;
+padding-right:2%;
+font-family:Times New Roman;
 }
-input[type=password]{
-width:850px;
-}
-
 footer
 {background-color:#000;
 color:#FFF;
 }
 
-.alignleft {
-	float: left;
-	padding-left: 45px;
-}
-.alignright {
-	float: right;
-	padding-right: 50px;
+
+
+.image{
+padding-left:50px;
+height:450px;
+width:250px;
+margin-right:200px;
+top:-500px;
+float:right;
+//border:2px solid;
+//border-color:#ff2014;
+
+
 }
 </style>
 </head>
+
 <body bgcolor="#E6E6E6">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -185,14 +284,13 @@ color:#FFF;
         <a href="about.php">About</a>
       </li>
        <li><a href="contact.php">Contact Us</a></li>
-      <li class="active"><a href="login.php">Login</a></li>
+      <li><a href="login.php">Login</a></li>
  <li><a href="signup.php">Sign up</a></li>     
     </ul>
     <?php   }?>
      </div>
     
 </nav>
-
 <!--<div class="logo"><img src="images/logo2cc.png" /></div>-->
 
 
@@ -204,100 +302,7 @@ color:#FFF;
 </div>
 
 </div>
-
-<?php
-require('db.php');
-
-if (isset($_POST['email']))
-{
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    
-	$query = "SELECT * FROM `users` WHERE email='$email' AND pwd='$pwd'";
-    $result = mysqli_query($con,$query) or die(mysql_error());
-    $rows = mysqli_num_rows($result);
-	if($rows==1)
-	 {
-	    $row = mysqli_fetch_array($result);
-        $role = $row['role'];
-    $fname = $row['fname'];
-    $id = $row['id'];
-    $lname = $row['lname'];
-    $ffname = $row['ffname'];
-    $mfname = $row['mfname'];
-    $dob = $row['dob'];
-    $gender = $row['gender'];
-    $address = $row['address'];
-    $weight = $row['weight'];
-    $birthplace = $row['birthplace'];
-    $birthtime =$row['birthtime'];
-    $t4=$row['t4'];
-    $t3=$row['t3'];
-    $t5=$row['t5'];
-    $t2=$row['t2'];
-    $sound=$row['sound'];
-    $cpwd=$row['cpwd'];
-    $maxloc=$row['maxloc'];
-    $image_name=$row['image_name'];
-$confirmed=$row['confirmed'];
-
-
-	if($confirmed == 1)
-	{
-
-  if($role=='admin')
-  {
-  header("Location:viewusers.php?$"); 
-  }
-  else
-  {
-  $_SESSION['email']= $email;
-         $_SESSION['pwd']= $pwd;
-         $_SESSION['fname']= $fname;
-         $_SESSION['id']= $id;
-         $_SESSION['lname']= $lname;
-         $_SESSION['ffname']= $ffname;
-         $_SESSION['mfname']= $mfname;
-         $_SESSION['dob']= $dob;
-         $_SESSION['gender']= $gender;
-         $_SESSION['address']= $address;
-         $_SESSION['weight']= $weight;
-         $_SESSION['birthplace']= $birthplace;
-         $_SESSION['birthtime']= $birthtime;
-         $_SESSION['maxloc']= $maxloc;
-         $_SESSION['t4']= $t4;
-         $_SESSION['t3']= $t3;
-         $_SESSION['t2']= $t2;
-         $_SESSION['t5']= $t5;
-         $_SESSION['sound']= $sound;
-         $_SESSION['cpwd']= $cpwd;
-         $_SESSION['image_name']= $image_name;
-
-   header("Location: patientinf.php");
-   }
-   }
-   else
-			{
-				echo "<h4 align='center'>Account not yet verified.</h4>";
-                                echo "<h4 align='center'>   Please verify first. </h4>";
-                                                     
-			echo "<h4 align='center'>    A verification link has been sent on your mail Id.</h4>";
-	 }}
-
-
-	else
-	{
- ?>
-	  <script type="text/javascript">
-	  alert("Wrong Email or Password");
-location="login.php";
-</script >
-
-<?php
-	}
-  }
-else{
-?>
+<div>
 <div class="sidenav">
 <ul>
 <li><a href="physiology.php">Physiology</a></li><br />
@@ -309,31 +314,62 @@ else{
 <li><a href="signalana.php">Signal Analysis and Interpretation </a></li><br />
 <li><a href="deep.php">Deep Learning</a></li></ul>
 </div>
-<div class="main">
-
-
-
-  <form action="" method="post" name="login">
-  <br/>
-  <br />
-  
-  <div class="form-group" style="margin-left:45px;">
-     <label for="email" >Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="required">
-    </div>
-    <div class="form-group" style="margin-left:45px;">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required="required" >
-    </div>
-    <input type="submit"  name="submit" class="btn btn-success" value="Submit" style="margin-left:45px;"/>
-  </form>
-   <div id="textbox" style="clear: both;">
-  <p class="alignleft">Not registered yet? <a href='signup.php'>Register Here</a></p>
-  <p class="alignright"><a href='forgotpassword.php'>Forgot Password ?</a></p>
+<div class="main"> <br />
+<br />
+<h2 style="font-family:vivaldi;margin-left:45px; margin-right:45px; margin-top:-70px;" align="justify"><b>Electromyogram (EMG)</b></h2>
+<h4 align="justify" style="margin-left:45px; margin-right:45px;">
+Electromyography (EMG) is an electro diagnostic medicine technique that measures
+ muscle response or electrical activity in response to a nerve stimulation of the muscle. 
+  EMG is performed using an instrument called an electromyograph to produce a record called
+   an electromyogram. An electromyograph detects the electric potential
+    generated by muscle cells when these cells are electrically or neurologically activated. 
+ <br/>
+ <br/>
+  <div class="image">
+  <a href="#"><img id="myimg" src="images/emg.jpg" height:"400px" width="400px" alt="Recording an EMG Signal"></a>  
+ </div>
+ <!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
 </div>
-</div>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
 
-<div class="right">
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myimg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+    modal.style.display = "none";
+}
+</script>
+ A Nerve Conduction Study (NCS) involves activating nerves electrically with small safe
+  pulses over several points on the skin, usually on the limbs, and measuring the responses obtained.
+   Usually, the response or signal is measured from the nerve itself or from a muscle 
+   supplied by the nerve being activated. This gives information about the state of health of the nerve,
+    muscle and neuromuscular junction (the portion responsible for communication between the nerve and muscle).
+     A commercial device is normally employed to measure the signals. Electromyography is also known as needle EMG. 
+     It is performed by way of a needle electrode. It is rather similar to having an electrical microphone
+      at the tip of the needle. Muscles are electrically active organs, and the signals and patterns of signals can 
+      lend additional information regarding the state of the muscle as well as the nerve supplying it.
+ </h4>
+    
+    </div>
+<div class="right"> 
+
 <center>
 <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
@@ -347,7 +383,6 @@ else{
   </form>
   <?php } ?>
 
-
 <br/>
   <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
@@ -360,9 +395,10 @@ else{
   <button type="submit" class="btn btn-success" >Upload images</button>
   </form>
   <?php } ?>
+
   <br />
-  
-  <?php
+
+ <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
    <form action="vp.php" >
   <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">View Profile</button>
@@ -373,9 +409,9 @@ else{
   <button type="submit" class="btn btn-success" >View Profile</button>
   </form>
   <?php } ?>
-   
- 
-<br />
+  
+  <br />
+
  <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
    <form action="picsearchnormal.php" >
@@ -400,17 +436,16 @@ else{
   <form action="picsearchproposed2.php" >
   <button type="submit" class="btn btn-success" >Analyse 2</button>
   </form>
-  <?php }}?>
+  <?php } ?>
    
-  
-  
-  
-  
-
- 
    
 </center>
 </div>
-
+</div>
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>
+
+
+

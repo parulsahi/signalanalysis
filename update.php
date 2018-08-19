@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 require('db.php');
-include("auth.php");
+session_start();
+if(!isset($_SESSION["id"])){
+header("Location: login.php");
+exit(); }
 $id = isset($_POST['id']) ? $_POST['id'] : '';
 //$id=$_SESSION['id'];
 $query = "SELECT * from `users` WHERE id='".$id."'";
@@ -214,13 +217,15 @@ Webcam.reset();
 	document.getElementById("another").style.display="none";
 	document.getElementById("snap").style.display="none"; 
     }
-
 }
+
+
 function another_pic()
 {
 Webcam.attach('#my_camera' );
 document.getElementById("snap").style.display='block';
 document.getElementById("upload").style.display='block';
+document.getElementById("another").style.display='none';
 }
 </script>
 <style type="text/css">
@@ -429,18 +434,38 @@ border-color:#ff2014;*/
       <a class="navbar-brand" href="#"></a>
     </div>
 
-    <ul class="nav navbar-nav navbar-right l1">
-        <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
-    <li><a href="11.php">Home</a></li>
-      <li>
-        <a href="about.html">About</a>
+    <?php
+    if (isset($_SESSION["id"])) {
+    ?>
+     <ul class="nav navbar-nav navbar-right l1">
+     <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
+
+     <li>
+        <a href="index.php">Home</a>
       </li>
+      <li>
+        <a href="about.php">About</a>
+      </li>
+      <li><a href="contact.php">Contact Us</a></li>
+		<li><a href="logout.php">Logout</a></li>
+   </ul>
+    <?php } else { ?>
+       <ul class="nav navbar-nav navbar-right l1">
+ 
 
-      <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="logout.php">Logout</a></li>
+     <li>
+        <a href="index.php">Home</a>   
+      </li>
+       <li>
+        <a href="about.php">About</a>
+      </li>
+       <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="login.php">Login</a></li>
+ <li><a href="signup.php">Sign up</a></li>     
     </ul>
-    </div>
-
+    <?php   }?>
+     </div>
+    
 </nav>
 
 
@@ -453,67 +478,10 @@ border-color:#ff2014;*/
 
 </div>
 
-<?php
-$status = "";
-    
-if(isset($_POST['new']) && $_POST['new']==1)
-{
-    $id=$_POST['id'];
-    $fname =$_POST['fname'];
-    $lname =$_POST['lname'];
-    $ffname =$_POST['ffname'];
-    $mfname =$_POST['mfname'];
-    $dob =$_POST['dob'];
-    $gender =$_POST['gender'];
-    $address =$_POST['address'];
-    $weight =$_POST['weight'];
-    $birthplace =$_POST['birthplace'];
-    $birthtime =$_POST['birthtime'];
-    $maxloc =$_POST['maxloc'];
-    $t4=$_POST['t4'];
-    $t3=$_POST['t3'];
-    $t5=$_POST['t5'];
-    $t2=$_POST['t2'];
-    $sound=$_POST['sound'];
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    $cpwd=$_POST['cpwd'];
-    $image_name=$_POST['hid'];
-    $rad=$_POST['rad'];
-                                    //uploading new photo to saveimages folder
-     $filename=$image_name;  //imagename
-if($rad=='d')    //if image is taken from local device
-{
-
-	$filepath = 'saveimages/';
-move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
-}
-//echo $filepath.$filename;
-
-
-$update="UPDATE `users` SET `fname`='".$fname."',`lname`='".$lname."',`ffname`='".$ffname."',`mfname`='".$mfname."',
-`dob`='".$dob."',`gender`='".$gender."',`address`='".$address."',`weight`='".$weight."',`birthplace`='".$birthplace."',
-`birthtime`='".$birthtime."',`t4`='".$t4."',`t3`='".$t3."',`t5`='".$t5."',`t2`='".$t2."',`maxloc`='".$maxloc."',`sound`='".$sound."',
-`image_name`='".$image_name."'
- WHERE id='".$id."'";
-$res=mysqli_query($con, $update) or die(mysqli_error($con));
- if($res)
- {
-echo $status = "Record updated Successfully";
-echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
-
-
-}
-  else
-     {
-      echo("Error description: " . mysqli_error($con));
-      }
-}else {
-?>
 
 <h1 align="center">CLIENT'S POFILE</h1>
 <div class="container">
-  <form action="" method="POST" enctype="multipart/form-data" >
+  <form action="update1.php" method="POST" enctype="multipart/form-data" >
   
 <input type="hidden" name="new" value="1" />
 <input name="id" type="hidden" value="<?php echo $_SESSION['id'];?>" />
@@ -552,8 +520,6 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
   <br/>
   <br />
   </div>
-  <!--<input type="hidden" name="new" value="1" />
-<input name="id" type="hidden" value="<?php echo $_SESSION['id'];?>" />-->
 
    <div class="form-group">
      <label for="Firstname">First Name:</label>
@@ -738,9 +704,10 @@ echo"</br>Click here to <a href='patientinf.php'>Go Back</a>";
   <input type="text" id="hid"  style="display:none;" name="hid" />
 
     <input type="submit"  name="submit" class="btn btn-success" value="Update" onfocus="(ShowPicture('Stylehand',0),ShowPicture('Styleeye',0),ShowPicture('Stylecolor',0),ShowPicture('Styletaste',0))"/>
-
+     <input type="button"  onclick="location.href='vp.php';" value="Cancel" class="btn btn-warning" />
       </form>
+
  </div>
-<?php } ?>
+<?php  ?>
 </body>
 </html>

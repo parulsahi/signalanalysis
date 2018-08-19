@@ -1,6 +1,12 @@
 <?php
-include("auth.php");
+
 require('db.php');
+
+session_start();
+if(!isset($_SESSION["id"])){
+header("Location: login.php");
+exit(); }
+
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -242,6 +248,30 @@ footer
 {background-color:#000;
 color:#FFF;
 }
+
+  #form1 {
+    position: relative;
+  float : left;
+  padding-left: 150px;
+}
+
+#form2 {
+    position: relative;
+  float : right;
+   padding-right: 150px;
+}
+
+#form3 {
+    position: relative;
+  float : left;
+  padding-left: 330px;
+}
+#form4 {
+    position: relative;
+  float : right;
+   padding-right: 330px;
+}
+
 </style>
 </head>
 
@@ -253,18 +283,38 @@ color:#FFF;
       <a class="navbar-brand" href="#"></a>
     </div>
 
-    <ul class="nav navbar-nav navbar-right l1">
-        <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
-    <li><a href="11.php">Home</a></li>
-      <li>
-        <a href="about.html">About</a>
+    <?php
+    if (isset($_SESSION["id"])) {
+    ?>
+     <ul class="nav navbar-nav navbar-right l1">
+     <li><a href="#">Welcome <?php echo $_SESSION['fname']; ?>!</a> </li>
+
+     <li>
+        <a href="index.php">Home</a>
       </li>
+      <li>
+        <a href="about.php">About</a>
+      </li>
+      <li><a href="contact.php">Contact Us</a></li>
+		<li><a href="logout.php">Logout</a></li>
+   </ul>
+    <?php } else { ?>
+       <ul class="nav navbar-nav navbar-right l1">
+ 
 
-      <li><a href="contact.html">Contact Us</a></li>
-	<li><a href="logout.php">Logout</a></li>
+     <li>
+        <a href="index.php">Home</a>   
+      </li>
+       <li>
+        <a href="about.php">About</a>
+      </li>
+       <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="login.php">Login</a></li>
+ <li><a href="signup.php">Sign up</a></li>     
     </ul>
-    </div>
-
+    <?php   }?>
+     </div>
+    
 </nav>
 
 
@@ -276,27 +326,61 @@ color:#FFF;
 </div>
 
 </div>
-<div class="container">
-  <form action="#" >
-  <br/>
-  <br />
-  <button type="submit" class="btn btn-success">Record</button>
-  </form>
-  <form action="#" >
-  <br/>
-  <br />
-  <button type="submit" class="btn btn-success">Analysis</button>
-  </form>
+<h1 style="font-family:vivaldi;" align="center"> <b>Welcome to Sigana</b></h1>
 
-   <form action="vp.php" >
+ <center>
+<div class="container">
+  <form action="recordme.php" id="form1" >
+  <br/>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Record Signal</button>
+  </form>
+  
+
+ 
+ <form action="vp.php" id= "form2" >
   <br/>
   <br />
   <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">View Profile</button>
 
 
   </form>
+  <form action="pictures1.php" >
+  <br/>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Upload Pictures</button>
 
+
+  </form>
+   <br/>
+  <br />
+ 
+  <form action="picsearchnormal.php" id= "form3">
+  <br/>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Analyse 1</button>
+  </form>
+
+    <form action="picsearchproposed2.php" id= "form4">
+  <br/>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Analyse 2</button>
+  </form>
+
+ 
+ <!-- </form>
+
+  </form>
+  <form action="pictures2.php">
+  <br/>
+  <br />
+  <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">Pictures2</button>
+
+
+  </form>
+-->
 </div>
+</center>
 <footer align="center">
 Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>

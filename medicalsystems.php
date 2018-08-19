@@ -1,23 +1,19 @@
 <?php
 session_start();
-if (isset($_SESSION['id']))
-{
-  header("Location:patientinf.php");
-}
- ?>
-
+require('db.php');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Signal Analysis and Interpretation</title>
+<title>Medical Systems</title>
 <link rel="stylesheet" href="bootstrap.min.css">
   <script src="jquery.min.js"></script>
   <script src="bootstrap.min.js"></script>
 
 <style type="text/css">
 .sidenav {
-    height:600px;
+    height:700px;
     width:15%;
     top:47%;
     left:0;
@@ -39,7 +35,7 @@ if (isset($_SESSION['id']))
     color: #06F;
 }
 .right {
-    height:600px;
+    height:700px;
     width:15%;
     top:47%;
     right:0;
@@ -49,12 +45,11 @@ if (isset($_SESSION['id']))
 }
 
 .right a {
-     padding:15% 15% 15% 15%;
+    padding:15% 15% 15% 15%;
     text-decoration:blink;
-    font-size:20px;
+    font-size:25px;
     color:#333;
    /* display:block;*/
-   font-family:Times New Roman;
 }
 
 .right a:hover {
@@ -118,40 +113,29 @@ if (isset($_SESSION['id']))
 }
 .main
 {
-	height:600px;
+	height:700px;
 	width:70%;
 	left:15%;
 	right:15%;
 	top:47%;
-	//border:2px strong #F0C;
+	border:2px strong #F0C;
 	background:linear-gradient(to right,#D2DDB2,#C0D6AF,#DDE4B8,#D2DDB2,#DDE4B8,#C0D6AF,#D2DDB2);
-	//font-size:40px;
+	font-size:40px;
 float:left;
-
 }
-
-input[type=email]{
-width:850px;
+h4
+{ 
+padding-left:2%;
+padding-right:2%;
+font-family:Times New Roman;
 }
-input[type=password]{
-width:850px;
-}
-
 footer
 {background-color:#000;
 color:#FFF;
 }
-
-.alignleft {
-	float: left;
-	padding-left: 45px;
-}
-.alignright {
-	float: right;
-	padding-right: 50px;
-}
 </style>
 </head>
+
 <body bgcolor="#E6E6E6">
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -185,14 +169,13 @@ color:#FFF;
         <a href="about.php">About</a>
       </li>
        <li><a href="contact.php">Contact Us</a></li>
-      <li class="active"><a href="login.php">Login</a></li>
+      <li><a href="login.php">Login</a></li>
  <li><a href="signup.php">Sign up</a></li>     
     </ul>
     <?php   }?>
      </div>
     
 </nav>
-
 <!--<div class="logo"><img src="images/logo2cc.png" /></div>-->
 
 
@@ -204,100 +187,7 @@ color:#FFF;
 </div>
 
 </div>
-
-<?php
-require('db.php');
-
-if (isset($_POST['email']))
-{
-    $email =$_POST['email'];
-    $pwd=$_POST['pwd'];
-    
-	$query = "SELECT * FROM `users` WHERE email='$email' AND pwd='$pwd'";
-    $result = mysqli_query($con,$query) or die(mysql_error());
-    $rows = mysqli_num_rows($result);
-	if($rows==1)
-	 {
-	    $row = mysqli_fetch_array($result);
-        $role = $row['role'];
-    $fname = $row['fname'];
-    $id = $row['id'];
-    $lname = $row['lname'];
-    $ffname = $row['ffname'];
-    $mfname = $row['mfname'];
-    $dob = $row['dob'];
-    $gender = $row['gender'];
-    $address = $row['address'];
-    $weight = $row['weight'];
-    $birthplace = $row['birthplace'];
-    $birthtime =$row['birthtime'];
-    $t4=$row['t4'];
-    $t3=$row['t3'];
-    $t5=$row['t5'];
-    $t2=$row['t2'];
-    $sound=$row['sound'];
-    $cpwd=$row['cpwd'];
-    $maxloc=$row['maxloc'];
-    $image_name=$row['image_name'];
-$confirmed=$row['confirmed'];
-
-
-	if($confirmed == 1)
-	{
-
-  if($role=='admin')
-  {
-  header("Location:viewusers.php?$"); 
-  }
-  else
-  {
-  $_SESSION['email']= $email;
-         $_SESSION['pwd']= $pwd;
-         $_SESSION['fname']= $fname;
-         $_SESSION['id']= $id;
-         $_SESSION['lname']= $lname;
-         $_SESSION['ffname']= $ffname;
-         $_SESSION['mfname']= $mfname;
-         $_SESSION['dob']= $dob;
-         $_SESSION['gender']= $gender;
-         $_SESSION['address']= $address;
-         $_SESSION['weight']= $weight;
-         $_SESSION['birthplace']= $birthplace;
-         $_SESSION['birthtime']= $birthtime;
-         $_SESSION['maxloc']= $maxloc;
-         $_SESSION['t4']= $t4;
-         $_SESSION['t3']= $t3;
-         $_SESSION['t2']= $t2;
-         $_SESSION['t5']= $t5;
-         $_SESSION['sound']= $sound;
-         $_SESSION['cpwd']= $cpwd;
-         $_SESSION['image_name']= $image_name;
-
-   header("Location: patientinf.php");
-   }
-   }
-   else
-			{
-				echo "<h4 align='center'>Account not yet verified.</h4>";
-                                echo "<h4 align='center'>   Please verify first. </h4>";
-                                                     
-			echo "<h4 align='center'>    A verification link has been sent on your mail Id.</h4>";
-	 }}
-
-
-	else
-	{
- ?>
-	  <script type="text/javascript">
-	  alert("Wrong Email or Password");
-location="login.php";
-</script >
-
-<?php
-	}
-  }
-else{
-?>
+<div>
 <div class="sidenav">
 <ul>
 <li><a href="physiology.php">Physiology</a></li><br />
@@ -309,31 +199,44 @@ else{
 <li><a href="signalana.php">Signal Analysis and Interpretation </a></li><br />
 <li><a href="deep.php">Deep Learning</a></li></ul>
 </div>
-<div class="main">
-
-
-
-  <form action="" method="post" name="login">
-  <br/>
-  <br />
-  
-  <div class="form-group" style="margin-left:45px;">
-     <label for="email" >Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required="required">
-    </div>
-    <div class="form-group" style="margin-left:45px;">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required="required" >
-    </div>
-    <input type="submit"  name="submit" class="btn btn-success" value="Submit" style="margin-left:45px;"/>
-  </form>
-   <div id="textbox" style="clear: both;">
-  <p class="alignleft">Not registered yet? <a href='signup.php'>Register Here</a></p>
-  <p class="alignright"><a href='forgotpassword.php'>Forgot Password ?</a></p>
-</div>
-</div>
-
-<div class="right">
+<div class="main"> <br />
+<br />
+<h2 style="font-family:vivaldi;margin-left:45px; margin-right:45px; margin-top:-70px;" align="justify"><b>Medical systems</b></h2>
+<h4 align="justify" style="margin-left:45px; margin-right:45px;"><strong>Ayurveda:</strong> <br/>
+The doctrine of Ayurveda aims to keep structural and functional entities in a functional state of equilibrium,
+ which signifies good health. Any imbalance due to internal and external factor causes disease and restoring 
+ equilibrium through various techniques, procedures, regimes, diet and medicine constitute treatment. 
+ The philosophy of Ayurveda is based on the theory of Pancha bhootas (five element theory) of which 
+ all the objects and living bodies are composed of.
+<br/><br/>
+<strong>Siddha:</strong> <br/>
+Siddha system of medicine emphasize that medical treatment is oriented not 
+merely to disease, but also has to take into account the patient, environment,
+ age, habits, physical condition. Siddha literature is in Tamil and it is largely 
+ practiced in Tamil speaking parts of India and abroad.
+<br/><br/>
+<strong>Unani:</strong><br/>
+ Unani System of medicine is based on established knowledge and 
+ practices relating to promotion of positive health and prevention of diseases. 
+ Although Unani system originated in Greece, passed through many countries, 
+ Arabs enriched it with their aptitude and experience and the system was brought 
+ to India during Medieval period. Unani System emphasise the use of naturally occurring,
+  most herbal medicines, though it uses ingredients of animal and marine origin.
+<br/><br/>
+<strong>Homeopathy:</strong> <br/>Homeopathy is a system of medicine,
+ which believes in a specialized method of treatment of curing diseases
+  by administration of potency drugs, which have been experimentally proved 
+  to possess the power of producing similar artificial systems on human beings.
+<br/><br/>
+<strong>Yoga and Naturopathy:</strong> <br/>
+Yoga is a way of life, which has the potential for improvement of social and personal behavior,
+ improvement of physical health by encouraging better circulation of oxygenated blood in the body,
+  restraining sense organs and thereby inducing tranquility and serenity of mind. 
+  Naturopathy is also a way of life, with drugless treatment of diseases. 
+  The system is based on the ancient practice of application of simple laws of nature.
+   The advocates of naturopathy focus on eating and living habits, adoption of purification measures,
+    use of hydrotherapy, baths, massage etc.</h4></div>
+<div class="right"> 
 <center>
 <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
@@ -347,7 +250,6 @@ else{
   </form>
   <?php } ?>
 
-
 <br/>
   <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
@@ -360,9 +262,10 @@ else{
   <button type="submit" class="btn btn-success" >Upload images</button>
   </form>
   <?php } ?>
+
   <br />
-  
-  <?php
+
+ <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
    <form action="vp.php" >
   <button type="submit" class="btn btn-success" id="<?php echo $_SESSION['id'];?>">View Profile</button>
@@ -373,9 +276,9 @@ else{
   <button type="submit" class="btn btn-success" >View Profile</button>
   </form>
   <?php } ?>
-   
- 
-<br />
+  
+  <br />
+
  <?php
     if(isset($_SESSION['id']) && !empty($_SESSION['id'])){ ?>
    <form action="picsearchnormal.php" >
@@ -400,17 +303,16 @@ else{
   <form action="picsearchproposed2.php" >
   <button type="submit" class="btn btn-success" >Analyse 2</button>
   </form>
-  <?php }}?>
+  <?php } ?>
    
-  
-  
-  
-  
-
- 
    
 </center>
 </div>
-
+</div>
+<footer align="center">
+Developed by Department of Computer Science & IT, University of Jammu</footer>
 </body>
 </html>
+
+
+

@@ -458,7 +458,7 @@ border-color:#ff2014;*/
 
     <ul class="nav navbar-nav navbar-right l1">
         
-    <li><a href="11.php">Home</a></li>
+    <li><a href="index.php">Home</a></li>
       <li>
         <a href="about.html">About</a>
       </li>
@@ -479,11 +479,67 @@ border-color:#ff2014;*/
 </div>
 
 </div>
+  <?php
+require('db.php');
+$status = "";
+    
+if(isset($_POST['new']) && $_POST['new']==1)
+{
+    $id=$_POST['id'];
+    $fname =$_POST['fname'];
+    $lname =$_POST['lname'];
+    $ffname =$_POST['ffname'];
+    $mfname =$_POST['mfname'];
+    $dob =$_POST['dob'];
+    $gender =$_POST['gender'];
+    $address =$_POST['address'];
+    $weight =$_POST['weight'];
+    $birthplace =$_POST['birthplace'];
+    $birthtime =$_POST['birthtime'];
+    $maxloc =$_POST['maxloc'];
+    $t4=$_POST['t4'];
+    $t3=$_POST['t3'];
+    $t5=$_POST['t5'];
+    $t2=$_POST['t2'];
+    $sound=$_POST['sound'];
+    $email =$_POST['email'];
+    $pwd=$_POST['pwd'];
+    $cpwd=$_POST['cpwd'];
+    $image_name=$_POST['hid'];
+    $rad=$_POST['rad'];
+                                    //uploading new photo to saveimages folder
+     $filename=$image_name;  //imagename
+if($rad=='d')    //if image is taken from local device
+{
 
+	$filepath = 'saveimages/';
+move_uploaded_file($_FILES['pic']['tmp_name'], $filepath.$filename);
+}
+//echo $filepath.$filename;
+
+
+$update="UPDATE `users` SET `fname`='".$fname."',`lname`='".$lname."',`ffname`='".$ffname."',`mfname`='".$mfname."',
+`dob`='".$dob."',`gender`='".$gender."',`address`='".$address."',`weight`='".$weight."',`birthplace`='".$birthplace."',
+`birthtime`='".$birthtime."',`t4`='".$t4."',`t3`='".$t3."',`t5`='".$t5."',`t2`='".$t2."',`maxloc`='".$maxloc."',`sound`='".$sound."',
+`image_name`='".$image_name."'
+ WHERE id='".$id."'";
+$res=mysqli_query($con, $update) or die(mysqli_error($con));
+ if($res)
+ {
+     $status = "Record updated Successfully";
+  echo "<h3 align=center >$status</h3>";
+      echo "<br/><h4 align=center >Click here to <a href='viewusers.php'>Go Back</a>";
+}
+  else
+     {
+      echo("Error description: " . mysqli_error($con));
+      }
+}else {
+?>
 
 <h1 align="center">CLIENT'S POFILE</h1>
 <div class="container">
-  <form action="adminupdate2.php" method="POST" enctype="multipart/form-data" >
+  <form action="" method="POST" enctype="multipart/form-data" >
 
 <input name="id" type="hidden" value="<?php echo $id;?>" />
  <input type="hidden" name="new" value="1" />
@@ -521,8 +577,8 @@ border-color:#ff2014;*/
   <br/>
   <br />
   </div>
-  <!--<input type="hidden" name="new" value="1" />
-<input name="id" type="hidden" value="<?php echo $_SESSION['id'];?>" />-->
+
+
 
    <div class="form-group">
      <label for="Firstname">First Name:</label>
@@ -710,6 +766,6 @@ border-color:#ff2014;*/
 
       </form>
  </div>
-
+<?php } ?>
 </body>
 </html>
