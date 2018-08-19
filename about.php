@@ -356,7 +356,7 @@ color:#FFF;
         <p class="title">Mtech (Computer Science)</p>
         <p>Department of Computer Science & IT </p>
         <P>University of Jammu, J&K</p>
-        <p>Left to Right : Ruchi Pandita, Parul Sahi, Surbhi Mahajan, Preeti Digra</p>
+        <p>Left to Right : Ruchi Pandita, Surbhi Mahajan, Parul Sahi, Preeti Digra</p>
       
       </div>
     </div>
